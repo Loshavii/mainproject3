@@ -1,4 +1,4 @@
-
+/* 
    .register-user-container {
     display: flex;
     justify-content: center;
@@ -35,7 +35,7 @@
 .form-group input {
     width: 100%;
     padding: 10px;
-    padding-left: 40px; /* Offset for icon */
+    padding-left: 40px; 
     border: 1px solid #ccc;
     border-radius: 5px;
     box-sizing: border-box;
@@ -95,6 +95,121 @@
     flex: 1;
     background: linear-gradient(135deg, #229b22, #7cfc00);
     color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    text-align: center;
+}
+
+.welcome-container h2 {
+    margin-bottom: 10px;
+}
+
+.welcome-container p {
+    font-size: 16px;
+} */
+
+
+.register-user-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #222629; /* Background color */
+}
+
+.register-user-card {
+    display: flex;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    max-width: 900px;
+    background: #ffffff; /* Card background */
+}
+
+.form-container {
+    flex: 1;
+    padding: 20px;
+}
+
+.form-container h2 {
+    margin-bottom: 20px;
+    color: #86c232; /* Heading color */
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    padding-left: 40px; /* Offset for icon */
+    border: 1px solid #6b6e70; /* Border color */
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.form-group .icon {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: #6b6e70; /* Icon color */
+}
+
+.password-group {
+    position: relative;
+}
+
+.password-toggle {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    color: #6b6e70; /* Toggle color */
+    cursor: pointer;
+}
+
+.submit-button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: #86c232; /* Button color */
+    color: #ffffff; /* Button text color */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.submit-button:hover {
+    background: #7b9c2f; /* Hover shade for button */
+}
+
+.login-link {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.login-link a {
+    color: #7cfc00; /* Link color */
+    text-decoration: none;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+    color: #7b9c2f; /* Hover shade for link */
+}
+
+.welcome-container {
+    flex: 1;
+    background: linear-gradient(135deg, #86c232, #7b9c2f); /* Gradient using button color */
+    color: #ffffff; /* Text color */
     display: flex;
     flex-direction: column;
     justify-content: center;

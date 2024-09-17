@@ -1,7 +1,7 @@
 // UserManagement.js
 
 import React from 'react';
-import '../CSS/UserManagement.css'; // Import the CSS file for styling
+import '../CSS/UserManagement.css'; 
 import { FaUser } from 'react-icons/fa';
 
 const UserManagement = () => {
@@ -80,3 +80,66 @@ const UserManagement = () => {
 };
 
 export default UserManagement;
+
+
+// import React, { useEffect, useState } from 'react';
+// import axios from 'axios';
+// import '../CSS/UserManagement.css'; // Import the CSS file for styling
+// import { FaUser } from 'react-icons/fa';
+
+// const UserManagement = () => {
+//   const [users, setUsers] = useState([]);
+
+//   useEffect(() => {
+//     const fetchUsers = async () => {
+//       try {
+//         const response = await axios.get('http://localhost:2003/api/users');
+//         setUsers(response.data);
+//       } catch (error) {
+//         console.error('Error fetching users:', error);
+//       }
+//     };
+//     fetchUsers();
+//   }, []);
+
+//   return (
+//     <div className="contain">
+//       <div className="main-content">
+//         <h1 className="header">User Management</h1>
+//         <table className="user-table">
+//           <thead>
+//             <tr>
+//               <th className="table-header">Name</th>
+//               <th className="table-header">Email</th>
+//               <th className="table-header">Registration Date</th>
+//               <th className="table-header">Last Login</th>
+//               <th className="table-header">Status</th>
+//             </tr>
+//           </thead>
+//           <tbody>
+//             {users.map((user) => (
+//               <tr key={user._id} className="table-row">
+//                 <td className="table-cell">
+//                   <div className="user-info">
+//                     <div className="avatar">
+//                       <FaUser />
+//                     </div>
+//                     {user.firstName} {user.lastName}
+//                   </div>
+//                 </td>
+//                 <td className="table-cell">{user.email}</td>
+//                 <td className="table-cell">{new Date(user.registrationDate).toLocaleDateString()}</td>
+//                 <td className="table-cell">{new Date(user.lastLogin).toLocaleDateString()}</td>
+//                 <td className="table-cell">
+//                   <span className={`status ${user.status.toLowerCase()}`}>{user.status}</span>
+//                 </td>
+//               </tr>
+//             ))}
+//           </tbody>
+//         </table>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default UserManagement;
