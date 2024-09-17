@@ -38,7 +38,7 @@ function AdminDashboard() {
           <div className="grid-item">
             <h3>User Management</h3>
             <p>Manage user activities.</p>
-            <a href="#">Learn more →</a>
+            <Link to="/admin/users">Learn more →</Link>
           </div>
           <div className="grid-item">
             <h3>Activites</h3>

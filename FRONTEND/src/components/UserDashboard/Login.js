@@ -1,11 +1,12 @@
 
+
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../CSS/Login.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
-
 
 function Login() {
     const [passwordShown, setPasswordShown] = useState(false);
@@ -15,6 +16,7 @@ function Login() {
     });
     const [errors, setErrors] = useState({});
     const [errorMessage, setErrorMessage] = useState('');
+    const [successMessage, setSuccessMessage] = useState(''); // New state for success message
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     const navigate = useNavigate();
@@ -61,16 +63,20 @@ function Login() {
             sessionStorage.setItem('role', role);
 
             setErrorMessage('');
+            setSuccessMessage('Login successful! Redirecting...'); // Set success message
 
             // Conditionally navigate based on user role
-            if (role === 'admin') {
-                navigate('/admin-dashboard'); // Navigate to Admin Dashboard
-            } else if (role === 'coach') {
-                navigate('/coach-dashboard'); // Navigate to Coach Dashboard
-            } else if (role === 'user') {
-                navigate('/user-dashboard'); // Navigate to User Dashboard
-            }
+            setTimeout(() => {  // Delay navigation to show success message for a brief moment
+                if (role === 'admin') {
+                    navigate('/admin-dashboard'); // Navigate to Admin Dashboard
+                } else if (role === 'coach') {
+                    navigate('/coach-dashboard'); // Navigate to Coach Dashboard
+                } else if (role === 'user') {
+                    navigate('/user-dashboard'); // Navigate to User Dashboard
+                }
+            }, 1500); // Wait 1.5 seconds before redirecting
         } catch (error) {
+            setSuccessMessage(''); // Clear success message on error
             setErrorMessage(error.response?.data?.message || 'Invalid login credentials.');
         } finally {
             setIsSubmitting(false);
@@ -106,6 +112,7 @@ function Login() {
                         {errors.password && <small className="error">{errors.password}</small>}
                     </div>
                     {errorMessage && <div className="error-message">{errorMessage}</div>}
+                    {successMessage && <div className="success-message">{successMessage}</div>} {/* Success message */}
                     <button type="submit" className="login-button" disabled={isSubmitting}>
                         {isSubmitting ? 'Logging in...' : 'Login'}
                     </button>

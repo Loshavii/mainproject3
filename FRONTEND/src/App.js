@@ -13,6 +13,9 @@ import AdminDashboard from './components/AdminDashboard/AdminDashboard';
 import CoachManagement from './components/CoachDashboard/Coach Management'; 
 import Loginuser from './components/UserDashboard/Loginuser';
 import CoachDashboard from './components/CoachDashboard/CoachDashboard';
+import UserManagement from './components/AdminDashboard/UserManagement';
+
+
 
 function App() {
   return (
@@ -31,6 +34,7 @@ function App() {
           <Route path="/admin/coaches" element={<CoachManagement />} />
           <Route path="/loginuser" element={<Loginuser />} />
           <Route path="/coach-dashboard" element={<CoachDashboard />} />
+          <Route path="/admin/users" element={<UserManagement />} />
         </Routes>
       </div>
     </Router>
