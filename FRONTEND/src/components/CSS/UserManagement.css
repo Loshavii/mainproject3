@@ -1,11 +1,11 @@
-/* Container for the entire layout */
+Container for the entire layout
 .contain {
     display: flex;
     height: 100vh;
     background-color: #222629;
   }
   
-  /* Sidebar Styling */
+ 
   .sidebar {
     width: 250px;
     background-color: #333;
@@ -28,7 +28,7 @@
     color: white;
   }
   
-  /* Main Content Styling */
+  
   .main-content {
     flex-grow: 1;
     padding: 40px;
@@ -41,7 +41,7 @@
     margin-bottom: 20px;
   }
   
-  /* User Table */
+  
   .user-table {
     width: 100%;
     border-spacing: 0;
@@ -88,7 +88,7 @@
     color: white;
   }
   
-  /* Status Badges */
+ 
   .status {
     padding: 5px 10px;
     border-radius: 20px;
@@ -104,7 +104,7 @@
     color: white;
   }
   
-  /* Action Buttons */
+  
   .action-button {
     padding: 5px 10px;
     margin: 0 5px;

@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../CSS/RegisterUser.css'; // Use shared styles or create specific ones
+import '../CSS/RegisterUser.css'; 
 import logo from '../logo.png';
 import sign from '../sign.png';
 import { Link } from 'react-router-dom';
@@ -69,7 +69,7 @@ const RegisterUser = () => {
                 email: '',
                 password: ''
             });
-            navigate('/coach'); // Navigate to Coach page after successful registration
+            navigate('/coach'); 
         } catch (error) {
             setErrorMessage(error.response?.data?.error || 'Something went wrong. Please try again.');
             setSuccessMessage('');
