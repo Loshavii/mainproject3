@@ -36,12 +36,12 @@ function AdminDashboard() {
             <Link to="/admin/coaches">Learn more →</Link>
           </div>
           <div className="grid-item">
-            <h3>Tutorial</h3>
-            <p>Learn how to build a CRUD app, from scratch to launch.</p>
+            <h3>User Management</h3>
+            <p>Manage user activities.</p>
             <a href="#">Learn more →</a>
           </div>
           <div className="grid-item">
-            <h3>Examples</h3>
+            <h3>Activites</h3>
             <p>Explore a collection of reference applications.</p>
             <a href="#">Explore →</a>
           </div>

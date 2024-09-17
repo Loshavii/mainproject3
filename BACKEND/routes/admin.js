@@ -19,7 +19,7 @@ router.put('/coaches/:id/approve', async (req, res) => {
     const coach = await Coach.findById(req.params.id);
     if (!coach) return res.status(404).json({ message: 'Coach not found' });
 
-    coach.status = req.body.status; // 'approved' or 'rejected'
+    coach.status = req.body.status; 
     await coach.save();
     res.json({ message: `Coach has been ${coach.status}` });
   } catch (err) {
