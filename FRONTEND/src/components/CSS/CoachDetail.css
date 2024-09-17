@@ -1,0 +1,148 @@
+
+
+.profile-card {
+  background-color: #0d0d0d; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.profile-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #229b22; /* Main container background color */
+  padding: 20px;
+  border-radius: 15px;
+  max-width: 900px;
+  margin: 0 auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 1s ease-in-out;
+}
+
+.left-side {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30%;
+}
+
+.profile-picture img {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.profile-picture img:hover {
+  transform: scale(1.1);
+}
+
+h2, h3 {
+  margin: 0;
+  text-align: center;
+  color: #ffff00; /* Text color */
+}
+
+.details {
+  margin-top: 20px;
+  text-align: left;
+  color: #7cfc00; /* Text color */
+}
+
+.details p {
+  margin: 5px 0;
+}
+
+.right-side {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  width: 65%;
+}
+
+.card {
+  background-color: #7cfc00; /* Card background color */
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+.card h4 {
+  margin: 0 0 10px;
+  color: #0d0d0d; /* Card title color */
+}
+
+.card p {
+  margin: 0;
+  color: #0d0d0d; /* Card text color */
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  background-color: #ffff00; /* Hover effect background color */
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* Existing styles remain the same */
+
+.buttons-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.follow-button, .send-request-button {
+  padding: 7px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #fff;
+  font-size: 16px;
+  margin: 0 10px;
+}
+
+.follow-button {
+  background-color: #7cfc00; /* Light green */
+}
+
+.send-request-button {
+  background-color: #7cfc00; /* Darker green */
+}
+
+.profile-setup-form {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #ffff00; /* Yellow */
+  border-radius: 5px;
+  animation: fadeIn 0.5s ease-in-out;
+}
+.follow-button:hover, .send-request-button:hover {
+  background-color: #229b22; /* Hover effect background color */
+  transform: translateY(-2px); /* Add a slight upward movement on hover */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow on hover */
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,64 @@
+.coach-management {
+    background-color: #222629; /* Background */
+    color: white; /* Text Color */
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  .coach-management h3, .coach-management h4 {
+    color: white !important; /* Heading color */
+    margin-bottom: 16px;
+  }
+  
+  .coach-management p {
+    color: #ffffff !important; /* Other text color */
+  }
+  
+  .coach-management ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .coach-management li {
+    background-color: #333; /* Slightly lighter background for coach details */
+    padding: 16px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+  }
+  
+  .coach-management button {
+    background-color: #86c232; /* Button background */
+    color: white !important; /* Button text color */
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .coach-management button:hover {
+    background-color: #6aa326; /* Button hover effect */
+  }
+  
+  .approve-btn {
+    background-color: #86c232;
+  }
+  
+  .approve-btn:hover {
+    background-color: #6aa326; /* Hover color for approve button */
+  }
+  
+  .reject-btn {
+    background-color: #ff5555;
+  }
+  
+  .reject-btn:hover {
+    background-color: #cc4444; /* Hover color for reject button */
+  }
+  
+  .no-requests {
+    color: #ffffff !important; /* Other text color */
+    font-size: 18px;
+  }
+  
