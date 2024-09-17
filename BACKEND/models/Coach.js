@@ -20,11 +20,6 @@ const coachSchema = new mongoose.Schema({
 
 
 
-
-
-
-
-
 // Password hash middleware
 coachSchema.pre('save', async function(next) {
     if (!this.isModified('password')) {
