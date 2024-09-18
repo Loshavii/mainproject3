@@ -1,7 +1,5 @@
 
 
-
-
 const express = require('express');
 const router = express.Router();
 const Coach = require('../models/Coach');
@@ -54,17 +52,6 @@ router.get('/coaches/pending', async (req, res) => {
     } catch (err) {
         console.error('Error fetching pending coaches:', err.message);
         res.status(500).json({ error: 'Error fetching pending coaches' });
-    }
-});
-
-// Route to fetch approved coaches
-router.get('/coaches/approved', async (req, res) => {
-    try {
-        const approvedCoaches = await Coach.find({ status: 'approved' });
-        res.json(approvedCoaches);
-    } catch (err) {
-        console.error('Error fetching approved coaches:', err.message);
-        res.status(500).json({ error: 'Error fetching approved coaches' });
     }
 });
 
@@ -123,3 +110,6 @@ router.post('/login', async (req, res) => {
 });
 
 module.exports = router;
+
+
+
