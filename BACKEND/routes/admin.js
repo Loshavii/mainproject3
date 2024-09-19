@@ -1,6 +1,7 @@
 
 
 
+
 const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
@@ -74,9 +75,9 @@ router.put('/coaches/:id/approve', adminAuth, async (req, res) => {
 });
 
 // Fetch all active coaches (for the admin dashboard)
-router.get('/coaches', adminAuth, async (req, res) => {
+router.get('/coaches/approved', adminAuth, async (req, res) => {
     try {
-        const coaches = await Coach.find({ status: 'approved' }, 'firstName lastName username email qualification status');
+        const coaches = await Coach.find({ status: 'approved' }, );
         res.status(200).json(coaches);
     } catch (err) {
         res.status(500).json({ message: 'Error fetching coaches' });
@@ -94,3 +95,5 @@ router.get('/payments/reports', adminAuth, (req, res) => {
 });
 
 module.exports = router;
+
+

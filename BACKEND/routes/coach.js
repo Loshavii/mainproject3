@@ -1,5 +1,7 @@
 
 
+
+
 const express = require('express');
 const router = express.Router();
 const Coach = require('../models/Coach');
@@ -77,6 +79,18 @@ router.put('/admin/coaches/:id/approve', async (req, res) => {
     }
 });
 
+// Fetch all approved coaches (for displaying in the app)
+router.get('/coaches/approved', async (req, res) => {
+    try {
+        const approvedCoaches = await Coach.find({ status: 'approved' });
+        res.json(approvedCoaches);
+    } catch (err) {
+        console.error('Error fetching approved coaches:', err.message);
+        res.status(500).json({ error: 'Error fetching approved coaches' });
+    }
+});
+
+
 // Route to handle coach login
 router.post('/login', async (req, res) => {
     try {
@@ -110,6 +124,7 @@ router.post('/login', async (req, res) => {
 });
 
 module.exports = router;
+
 
 
 
