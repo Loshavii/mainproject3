@@ -91,6 +91,18 @@ router.get('/coaches/approved', async (req, res) => {
 });
 
 
+// Fetch all rejected coaches
+router.get('/coaches/rejected', async (req, res) => {
+    try {
+        const rejectedCoaches = await Coach.find({ status: 'rejected' });
+        res.json(rejectedCoaches);
+    } catch (err) {
+        console.error('Error fetching rejected coaches:', err.message);
+        res.status(500).json({ error: 'Error fetching rejected coaches' });
+    }
+});
+
+
 // Route to handle coach login
 router.post('/login', async (req, res) => {
     try {
