@@ -8,10 +8,17 @@ const CoachProfile = () => {
     fullName: '',
     nickName: '',
     gender: '',
+    age: '',
+    education: '',
     country: '',
+    location: '',
     language: '',
     timeZone: '',
-    email: 'alexarowles@gmail.com'
+    email: 'alexarowles@gmail.com',
+    bio: '',
+    qualification: '',
+    coachingStyle: '',
+    availability: ''
   });
 
   const handleChange = (e) => {
@@ -70,43 +77,71 @@ const CoachProfile = () => {
             </select>
           </div>
           <div className="form-group">
-            <label htmlFor="country">Country</label>
-            <select
-              id="country"
-              name="country"
-              value={profile.country}
+            <label htmlFor="age">Age</label>
+            <input
+              type="number"
+              id="age"
+              name="age"
+              placeholder="Your Age"
+              value={profile.age}
               onChange={handleChange}
-            >
-              <option value="">Select Country</option>
-              {/* Add more country options here */}
-            </select>
+            />
           </div>
         </div>
         <div className="form-row">
           <div className="form-group">
-            <label htmlFor="language">Language</label>
-            <select
-              id="language"
-              name="language"
-              value={profile.language}
+            <label htmlFor="education">Education</label>
+            <input
+              type="text"
+              id="education"
+              name="education"
+              placeholder="Your Education"
+              value={profile.education}
               onChange={handleChange}
-            >
-              <option value="">Select Language</option>
-              {/* Add more language options here */}
-            </select>
+            />
           </div>
           <div className="form-group">
-            <label htmlFor="timeZone">Time Zone</label>
-            <select
-              id="timeZone"
-              name="timeZone"
-              value={profile.timeZone}
+            <label htmlFor="qualification">Qualification</label>
+            <input
+              type="text"
+              id="qualification"
+              name="qualification"
+              placeholder="Your Qualification"
+              value={profile.qualification}
               onChange={handleChange}
-            >
-              <option value="">Select Time Zone</option>
-              {/* Add more time zone options here */}
-            </select>
+            />
           </div>
+        </div>
+        
+        <div className="form-group">
+          <label htmlFor="bio">Bio</label>
+          <textarea
+            id="bio"
+            name="bio"
+            placeholder="Your Bio"
+            value={profile.bio}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="coachingStyle">Coaching Style</label>
+          <textarea
+            id="coachingStyle"
+            name="coachingStyle"
+            placeholder="Your Coaching Style"
+            value={profile.coachingStyle}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="availability">Availability</label>
+          <textarea
+            id="availability"
+            name="availability"
+            placeholder="Your Availability"
+            value={profile.availability}
+            onChange={handleChange}
+          />
         </div>
         <div className="form-group email-group">
           <label htmlFor="email">My email Address</label>
@@ -118,9 +153,9 @@ const CoachProfile = () => {
             onChange={handleChange}
             disabled
           />
-          <span className="email-verified">1 month ago</span>
+          
         </div>
-        <button type="button" className="add-email-button">+ Add Email Address</button>
+        
       </form>
     </div>
   );
