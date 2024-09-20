@@ -1,4 +1,51 @@
-// frontend/src/App.js
+// // frontend/src/App.js
+// import React from 'react';
+// import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+// import LandingPage from './components/UserDashboard/LandingPage';
+// import RegisterUser from './components/UserDashboard/RegisterUser';
+// import RegisterCoach from './components/UserDashboard/RegisterCoach';
+// import Login from './components/UserDashboard/Login';
+// import Coach from './components/UserDashboard/Coach';
+// import CoachDetail from './components/UserDashboard/CoachDetail';
+// import RegisterSelectPage from './components/UserDashboard/RegisterSelectPage';
+// import ProfileSetup from './components/UserDashboard/ProfileSetup';
+// import AdminDashboard from './components/AdminDashboard/AdminDashboard';
+// import CoachManagement from './components/CoachDashboard/Coach Management'; 
+// import Loginuser from './components/UserDashboard/Loginuser';
+// import CoachDashboard from './components/CoachDashboard/CoachDashboard';
+// import UserManagement from './components/AdminDashboard/UserManagement';
+// import CoachPro from './components/CoachDashboard/CoachProfile';
+
+
+// function App() {
+//   return (
+//     <Router>
+//       <div className="App">
+//         <Routes>
+//           <Route path="/" element={<LandingPage />} />
+//           <Route path="/register-select" element={<RegisterSelectPage />} />
+//           <Route path="/register-user" element={<RegisterUser />} />
+//           <Route path="/register-coach" element={<RegisterCoach />} />
+//           <Route path="/login" element={<Login />} />
+//           <Route path="/admin-dashboard" element={<AdminDashboard />} />
+//           <Route path="/coach" element={<Coach />} />
+//           <Route path="/coach/:name" element={<CoachDetail />} />
+//           <Route path="/profile-setup" element={<ProfileSetup />} />
+//           <Route path="/admin/coaches" element={<CoachManagement />} />
+//           <Route path="/loginuser" element={<Loginuser />} />
+//           <Route path="/coach-dashboard" element={<CoachDashboard />} />
+//           <Route path="/admin/users" element={<UserManagement />} />
+//           <Route Path="/coach/coachupdate" element={<CoachPro />} />
+//         </Routes>
+//       </div>
+//     </Router>
+//   );
+// }
+
+// export default App;
+
+
+
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import LandingPage from './components/UserDashboard/LandingPage';
@@ -14,8 +61,7 @@ import CoachManagement from './components/CoachDashboard/Coach Management';
 import Loginuser from './components/UserDashboard/Loginuser';
 import CoachDashboard from './components/CoachDashboard/CoachDashboard';
 import UserManagement from './components/AdminDashboard/UserManagement';
-
-
+import CoachPro from './components/CoachDashboard/CoachProfile'; // Import CoachProfile
 
 function App() {
   return (
@@ -35,6 +81,8 @@ function App() {
           <Route path="/loginuser" element={<Loginuser />} />
           <Route path="/coach-dashboard" element={<CoachDashboard />} />
           <Route path="/admin/users" element={<UserManagement />} />
+          {/* Add CoachProfile route */}
+          <Route path="/coach-profile" element={<CoachPro />} />
         </Routes>
       </div>
     </Router>

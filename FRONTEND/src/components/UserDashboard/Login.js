@@ -1,6 +1,4 @@
 
-
-
 // import React, { useState } from 'react';
 // import { useNavigate } from 'react-router-dom';
 // import '../CSS/Login.css';
@@ -16,7 +14,7 @@
 //     });
 //     const [errors, setErrors] = useState({});
 //     const [errorMessage, setErrorMessage] = useState('');
-//     const [successMessage, setSuccessMessage] = useState(''); // New state for success message
+//     const [successMessage, setSuccessMessage] = useState('');
 //     const [isSubmitting, setIsSubmitting] = useState(false);
 
 //     const navigate = useNavigate();
@@ -54,7 +52,7 @@
 
 //         try {
 //             // Updated URL to coach login endpoint
-//             const response = await axios.post('http://localhost:2003/api/coaches/admin/login', formData);
+//             const response = await axios.post('http://localhost:2003/api/login', formData);
 //             const { token, id, role } = response.data;
 
 //             // Save login data to sessionStorage
@@ -63,20 +61,19 @@
 //             sessionStorage.setItem('role', role);
 
 //             setErrorMessage('');
-//             setSuccessMessage('Login successful! Redirecting...'); // Set success message
+//             setSuccessMessage('Login successful! Redirecting...');
 
-//             // Conditionally navigate based on user role
-//             setTimeout(() => {  // Delay navigation to show success message for a brief moment
+//             setTimeout(() => {
 //                 if (role === 'admin') {
-//                     navigate('/admin-dashboard'); // Navigate to Admin Dashboard
+//                     navigate('/admin-dashboard');
 //                 } else if (role === 'coach') {
-//                     navigate('/coach-dashboard'); // Navigate to Coach Dashboard
+//                     navigate('/coach-dashboard');
 //                 } else if (role === 'user') {
-//                     navigate('/user-dashboard'); // Navigate to User Dashboard
+//                     navigate('/user-dashboard');
 //                 }
-//             }, 1500); // Wait 1.5 seconds before redirecting
+//             }, 1500);
 //         } catch (error) {
-//             setSuccessMessage(''); // Clear success message on error
+//             setSuccessMessage('');
 //             setErrorMessage(error.response?.data?.message || 'Invalid login credentials.');
 //         } finally {
 //             setIsSubmitting(false);
@@ -112,7 +109,7 @@
 //                         {errors.password && <small className="error">{errors.password}</small>}
 //                     </div>
 //                     {errorMessage && <div className="error-message">{errorMessage}</div>}
-//                     {successMessage && <div className="success-message">{successMessage}</div>} {/* Success message */}
+//                     {successMessage && <div className="success-message">{successMessage}</div>}
 //                     <button type="submit" className="login-button" disabled={isSubmitting}>
 //                         {isSubmitting ? 'Logging in...' : 'Login'}
 //                     </button>
@@ -123,7 +120,6 @@
 // }
 
 // export default Login;
-
 
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -193,7 +189,8 @@ function Login() {
                 if (role === 'admin') {
                     navigate('/admin-dashboard');
                 } else if (role === 'coach') {
-                    navigate('/coach-dashboard');
+                    // Redirect to Coach Profile after coach login
+                    navigate('/coach-profile');
                 } else if (role === 'user') {
                     navigate('/user-dashboard');
                 }
