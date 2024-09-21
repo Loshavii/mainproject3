@@ -115,6 +115,7 @@ body {
   
   .stat-card h4 {
     margin-bottom: 10px;
+    color: #229b22 !important;
   }
   
   .stat-card p {
