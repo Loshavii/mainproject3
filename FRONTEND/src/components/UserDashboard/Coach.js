@@ -1,8 +1,4 @@
 
-
-
-
-
 import React, { useEffect, useState } from 'react';
 import '../CSS/Coach.css';
 import { Link } from 'react-router-dom';
@@ -46,3 +42,4 @@ const Coach = () => {
 };
 
 export default Coach;
+

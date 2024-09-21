@@ -29,7 +29,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/admin-dashboard" element={<AdminDashboard />} />
           <Route path="/coach" element={<Coach />} />
-          <Route path="/coach/:coachId" element={<CoachDetail />} />
+          <Route path="/coach/:coachEmail" element={<CoachDetail />} />
           <Route path="/profile-setup" element={<ProfileSetup />} />
           <Route path="/admin/coaches" element={<CoachManagement />} />
           <Route path="/loginuser" element={<Loginuser />} />
