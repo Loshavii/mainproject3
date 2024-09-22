@@ -4,17 +4,18 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: #222629; /* Background color */
+    background: #181818; 
 }
 
 .register-user-card {
     display: flex;
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 10px 20px rgba(109, 107, 107, 0.5),
+              0px 6px 6px rgba(209, 208, 209, 0.2);
     width: 80%;
     max-width: 900px;
-    background: #ffffff; /* Card background */
+    background: #0d0d0d !important; 
 }
 
 .form-container {
@@ -24,7 +25,7 @@
 
 .form-container h2 {
     margin-bottom: 20px;
-    color: #86c232; /* Heading color */
+    color: #b3ff00; /* Heading color */
 }
 
 .form-group {
@@ -62,20 +63,22 @@
     cursor: pointer;
 }
 
-.submit-button {
+.submit-butto {
     width: 100%;
     padding: 10px;
     border: none;
     border-radius: 5px;
-    background: #86c232; /* Button color */
-    color: #ffffff; /* Button text color */
+    background-color: #4d4b4b; /* Updated to match palette */
+    color: #0d0d0d; 
     font-size: 16px;
     cursor: pointer;
-    transition: background 0.3s ease;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
-.submit-button:hover {
-    background: #7b9c2f; /* Hover shade for button */
+.submit-butto:hover {
+    background-color: #d3d3d3; /* Updated to match palette */
+    color: #0d0d0d; /* Updated text color on hover */
+    transform: scale(1.05); /* Hover shade for button */
 }
 
 .login-link {
@@ -84,18 +87,18 @@
 }
 
 .login-link a {
-    color: #7cfc00; /* Link color */
+    color: #b3ff00 !important; /* Link color */
     text-decoration: none;
 }
 
 .login-link a:hover {
     text-decoration: underline;
-    color: #7b9c2f; /* Hover shade for link */
+    color: #b3ff00; /* Hover shade for link */
 }
 
 .welcome-container {
     flex: 1;
-    background: linear-gradient(135deg, #86c232, #7b9c2f); /* Gradient using button color */
+    background: linear-gradient(135deg, #0d0d0d, #4d4b4b) !important; /* Gradient using button color */
     color: #ffffff; /* Text color */
     display: flex;
     flex-direction: column;

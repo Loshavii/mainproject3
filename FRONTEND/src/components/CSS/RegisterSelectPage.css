@@ -1,102 +1,10 @@
-/* 
-
-   .landing-container {
-    display: flex;
-    height: 100vh;
-    background-color: #0d0d0d;
-    color: white;
-}
-
-.left-content {
-    flex: 1;
-    padding: 50px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-}
-
-.left-content h1 {
-    font-size: 3em;
-    color: #ffff00;
-}
-
-.left-content p {
-    margin-top: 20px;
-    font-size: 1.2em;
-    color: white;
-    line-height: 1.6;
-}
-
-.find-coach-button {
-    margin-top: 30px;
-    padding: 10px 20px;
-    background-color: #229b22;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1em;
-}
-
-.right-content {
-    position: relative;
-    width: 300px;
-    padding: 50px;
-}
-
-.top-right {
-    position: absolute;
-    bottom: 300px;
-    right: 20px;
-}
-
-.user-login-button {
-    padding: 10px 20px;
-    background-color: #ffff00;
-    color: #0d0d0d;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.bottom-right {
-    position: absolute;
-    bottom: 1px;
-    top:140px;
-    right: 20px;
-}
-
-.coachi-card {
-    padding: 20px;
-    background-color: white !important;
-    color: #0d0d0d;
-    border-radius: 10px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 300px;
-}
-
-.coach-card p {
-    margin-bottom: 15px;
-    font-size: 1em;
-}
-
-.coach-login-button {
-    padding: 10px 20px;
-    background-color: #229b22;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
- */
 
 
  .landing-container {
   display: flex;
   height: 100vh;
-  background-color: #222629; /* Background color */
-  color: white; /* Default text color */
+  background-color: #181818 ; /* Background color */
+  color: #d3d3d3; /* Default text color */
 }
 
 .left-content {
@@ -110,32 +18,32 @@
 
 .left-content h1 {
   font-size: 3em;
-  color: white; /* Heading color */
+  color: #d3d3d3; /* Heading color */
 }
 
 .left-content p {
   margin-top: 20px;
   font-size: 1.2em;
-  color: white; /* Text color */
+  color: #d3d3d3; /* Text color */
   line-height: 1.6;
 }
 
 .find-coach-button {
   margin-top: 30px;
   padding: 10px 20px;
-  background-color: #7cfc00; /* Button background */
-  color: #222629; /* Button text */
+  background-color: #4d4b4b; /* Updated to match palette */
+  color: #0d0d0d;/* Updated text color on hover */
+  transition: background-color 0.3s, transform 0.3s;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 1em;
-  transition: background-color 0.3s, transform 0.3s;
 }
 
 .find-coach-button:hover {
-  background-color: #86c232; /* Hover effect for button */
-  color: white; 
-  transform: scale(1.05);
+  background-color: #d3d3d3; /* Updated to match palette */
+    color: #0d0d0d; /* Updated text color on hover */
+    transform: scale(1.05);
 }
 
 .right-content {
@@ -154,15 +62,15 @@
 
 .user-login-button {
   padding: 10px 20px;
-  background-color: #7cfc00; /* Button background */
-  color: #222629; /* Text color */
+  background-color: #4d4b4b; /* Updated to match palette */
+  color: #0d0d0d;/* Updated text color on hover */
+  transition: background-color 0.3s, transform 0.3s; /* Text color */
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 1em;
   display: flex;
   align-items: center; /* Align icon and text */
-  transition: background-color 0.3s, transform 0.3s;
 }
 
 .user-login-button .icon {
@@ -171,8 +79,8 @@
 }
 
 .user-login-button:hover {
-  background-color: #86c232; /* Hover effect */
-  color: white; /* Text color on hover */
+  background-color: #d3d3d3; /* Updated to match palette */
+  color: #0d0d0d; /* Updated text color on hover */
   transform: scale(1.05); /* Slight scale animation */
 }
 
@@ -202,16 +110,16 @@
 
 .coach-login-button {
   padding: 10px 20px;
-  background-color: #7cfc00; 
-  color: #222629; 
+  background-color: #4d4b4b; /* Updated to match palette */
+  color: #0d0d0d;/* Updated text color on hover */
+  transition: background-color 0.3s, transform 0.3s;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.3s;
 }
 
 .coach-login-button:hover {
-  background-color: #86c232; 
-  color: white;
-  transform: scale(1.05);
+  background-color: #d3d3d3; /* Updated to match palette */
+    color: #0d0d0d; /* Updated text color on hover */
+    transform: scale(1.05);
 }

@@ -185,7 +185,7 @@ const RegisterCoach = () => {
                         {errorMessage && <p className="error-message">{errorMessage}</p>}
                     </form>
                 </div>
-                <div className="welcome-container">
+                <div className="welcome-contain">
                     <h2>Glad to see you!</h2>
                     <p>Welcome to our coaching platform.</p>
                 </div>

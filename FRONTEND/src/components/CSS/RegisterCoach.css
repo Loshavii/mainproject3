@@ -1,23 +1,21 @@
 
-
-
-
    .register-coach-container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background: #0d0d0d;
+    background: #181818;
   }
   
   .register-coach-card {
     display: flex;
     border-radius: 10px;
     overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 10px 20px rgba(109, 107, 107, 0.5),
+              0px 6px 6px rgba(209, 208, 209, 0.2);
     width: 80%;
     max-width: 900px;
-    background: #ffffff;
+    background: #0d0d0d;
   }
   
   .form-container {
@@ -27,7 +25,7 @@
   
   .form-container h2 {
     margin-bottom: 20px;
-    color: #229b22;
+    color: #b3ff00;
   }
   
   .form-group {
@@ -39,7 +37,7 @@
     width: 100%;
     padding: 10px;
     padding-left: 40px; /* Offset for icon */
-    border: 1px solid #ccc;
+    border: 1px solid #6b6e70;
     border-radius: 5px;
     box-sizing: border-box;
   }
@@ -49,7 +47,7 @@
     top: 50%;
     left: 10px;
     transform: translateY(-50%);
-    color: #7cfc00;
+    color: #b3ff00;
   }
   
   .password-group {
@@ -61,7 +59,7 @@
     top: 50%;
     right: 10px;
     transform: translateY(-50%);
-    color: #7cfc00;
+    color: #b3ff00;
     cursor: pointer;
   }
   
@@ -70,14 +68,17 @@
     padding: 10px;
     border: none;
     border-radius: 5px;
-    background: linear-gradient(90deg, #229b22, #7cfc00);
-    color: #fff;
+    background-color: #4d4b4b; /* Updated to match palette */
+    color: #0d0d0d; 
     font-size: 16px;
     cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s;
   }
   
   .submit-button:hover {
-    background: linear-gradient(90deg, #7cfc00, #229b22);
+    background-color: #d3d3d3; /* Updated to match palette */
+    color: #0d0d0d; /* Updated text color on hover */
+    transform: scale(1.05); /* Hover shade for button */
   }
   
   .login-link {
@@ -86,18 +87,19 @@
   }
   
   .login-link a {
-    color: #229b22;
+    color: #b3ff00;
     text-decoration: none;
   }
   
   .login-link a:hover {
     text-decoration: underline;
+    color: #b3ff00;
   }
   
-  .welcome-container {
+  .welcome-contain {
     flex: 1;
-    background: linear-gradient(135deg, #229b22, #7cfc00);
-    color: #fff;
+    background: linear-gradient(135deg, #0d0d0d, #4d4b4b) !important; /* Gradient using button color */
+    color: #ffffff; /* Text color */
     display: flex;
     flex-direction: column;
     justify-content: center;

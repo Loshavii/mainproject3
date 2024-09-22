@@ -147,7 +147,7 @@ const RegisterUser = () => {
                                 <FaEye className="icon password-toggle" onClick={togglePasswordVisibility} />
                             )}
                         </div>
-                        <button type="submit" className="submit-button">
+                        <button type="submit" className="submit-butto">
                             Create my account
                         </button>
                         {successMessage && <p className="success">{successMessage}</p>}
