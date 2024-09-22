@@ -84,7 +84,7 @@ function CoachDetail() {
               <i className="fas fa-lock"></i>
             </div>
             <h3>Select Interaction Type</h3>
-            <button className="modal-button" onClick={() => navigate('/form-request')}>Via Form</button>
+            <button className="modal-button" onClick={() => navigate('/profile-setup')}>Via Form</button>
             <button className="modal-button" onClick={() => navigate('/chat-request')}>Via Chat</button>
             <button className="modal-button" onClick={() => navigate('/video-request')}>Via Video Interaction</button>
             <button className="modal-close-button" onClick={handleCloseModal}>Close</button>

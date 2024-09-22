@@ -229,7 +229,7 @@ function ProfileSetup() {
      
       <div className="button-group">
         <button type="submit">Save Profile</button>
-        <button type="button" className="update-button">Update Profile</button>
+        {/* <button type="button" className="update-button">Update Profile</button> */}
       </div>
     
     </form>

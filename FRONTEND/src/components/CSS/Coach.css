@@ -55,12 +55,12 @@
   .coach-text {
     font-size: 1rem;
     margin-bottom: 20px;
-    color: #d3d3d3 !important; /* Updated to match text color in coach card */
+    color: #d3d3d3 !important; 
   }
   
   .book-session-btn {
-    background-color: #4d4b4b; /* Updated to match palette */
-    color: #0d0d0d; /* Updated text color */
+    background-color: #4d4b4b; 
+    color: #0d0d0d; 
     padding: 10px 20px;
     border: none;
     border-radius: 30px;
@@ -69,8 +69,8 @@
   }
   
   .book-session-btn:hover {
-    background-color: #d3d3d3; /* Updated to match palette */
-    color: #0d0d0d; /* Updated text color on hover */
+    background-color: #d3d3d3; 
+    color: #0d0d0d; 
     transform: scale(1.05);
   }
   
