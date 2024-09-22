@@ -134,3 +134,4 @@ router.put('/users/:id/activate', adminAuth, async (req, res) => {
 
 module.exports = router;
 
+
