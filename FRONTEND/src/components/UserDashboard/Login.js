@@ -53,7 +53,7 @@ function Login() {
 
         try {
             // Updated URL to coach login endpoint
-            const response = await axios.post('http://localhost:2003/api/login', formData);
+            const response = await axios.post('http://localhost:2003/api/coaches/login', formData);
             const { token, id, role } = response.data;
 
             // Save login data to sessionStorage

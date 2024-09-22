@@ -1,4 +1,5 @@
 
+
 import "../CSS/CoachDetail.css";
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from 'react-router-dom';
@@ -8,7 +9,8 @@ function CoachDetail() {
   const navigate = useNavigate();
   const { coachEmail } = useParams(); // Fetch the email from the URL
   const [coachProfile, setCoachProfile] = useState(null);
-  
+  const [showModal, setShowModal] = useState(false); // State for modal visibility
+
   useEffect(() => {
     // Fetch coach profile based on coachEmail
     const fetchCoachProfile = async () => {
@@ -24,7 +26,11 @@ function CoachDetail() {
   }, [coachEmail]);
 
   const handleSendRequest = () => {
-    navigate('/profile-setup');
+    setShowModal(true); // Show the modal when "Send Request" button is clicked
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false); // Close the modal
   };
 
   if (!coachProfile) {
@@ -68,12 +74,28 @@ function CoachDetail() {
           </div>
         </div>
       </div>
+
+     
+
+      {showModal && (
+        <div className="modal-overlay">
+          <div className="modal-card">
+            <div className="modal-icon">
+              <i className="fas fa-lock"></i>
+            </div>
+            <h3>Select Interaction Type</h3>
+            <button className="modal-button" onClick={() => navigate('/form-request')}>Via Form</button>
+            <button className="modal-button" onClick={() => navigate('/chat-request')}>Via Chat</button>
+            <button className="modal-button" onClick={() => navigate('/video-request')}>Via Video Interaction</button>
+            <button className="modal-close-button" onClick={handleCloseModal}>Close</button>
+          </div>
+        </div>
+      )}
+
     </div>
   );
 }
 
 export default CoachDetail;
-
-
 
 
