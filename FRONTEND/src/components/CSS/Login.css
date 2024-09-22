@@ -1,7 +1,7 @@
 login.css
 
 body {
-    background-color: #0d0d0d !important; 
+    background-color: #181818 !important; 
     margin: 0;
     font-family: Arial, sans-serif;
   }
@@ -14,9 +14,10 @@ body {
   }
   
   .login-card {
-    background-color: #fff;
+    background-color: #181818;
     border-radius: 10px;
-    box-shadow: 0px 4px 20px rgba(13, 13, 13, 0.5);
+    box-shadow: 0px 10px 20px rgba(109, 107, 107, 0.5),
+              0px 6px 6px rgba(209, 208, 209, 0.2);
     max-width: 400px;
     width: 100%;
     padding: 30px;
@@ -25,7 +26,6 @@ body {
   
   .login-card h2 {
     margin-bottom: 20px;
-    color: #229b22; 
     font-size: 28px;
   }
   
@@ -44,31 +44,34 @@ body {
   }
   
   .form-group input:focus {
-    border-color: #229b22; 
+    border-color: #b3ff00; 
     outline: none;
   }
   
   .login-button {
     width: 100%;
     padding: 12px;
-    background: linear-gradient(135deg, #229b22, #7cfc00); 
+    background-color: #4d4b4b; /* Updated to match palette */
+    color: #0d0d0d; 
     border: none;
     border-radius: 6px;
-    color: #ffff00;
+    
     font-size: 18px;
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
   
   .login-button:hover {
-    background-color: #229b22; 
+    background-color: #d3d3d3; /* Updated to match palette */
+    color: #0d0d0d; /* Updated text color on hover */
+    transform: scale(1.05);
   }
   .password-toggle-button {
     background: none;
     border: none;
     cursor: pointer;
     font-size: 16px;
-    color: #7cfc00;
+    color: #b3ff00;
     margin-left: 10px;
 }
 
