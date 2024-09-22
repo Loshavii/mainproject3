@@ -1,7 +1,7 @@
 
 
    body {
-    background-color: #0d0d0d !important; /* Updated to match palette */
+    background-color: #181818 !important; /* Updated to match palette */
     font-family: 'Arial', sans-serif;
   }
   
@@ -13,20 +13,23 @@
   }
   
   .coach-card {
-    background-color: #229b22 !important; /* Updated to match palette */
+    background-color: #181818 !important; /* Updated to match palette */
     border-radius: 15px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     margin: 15px;
     padding: 20px;
     width: 280px;
     text-align: center;
-    color: #ffff00; /* Updated text color */
+    color: #b3ff00 !important; 
     transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0px 10px 20px rgba(109, 107, 107, 0.5),
+              0px 6px 6px rgba(209, 208, 209, 0.2);
   }
   
   .coach-card:hover {
     transform: translateY(-10px);
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 10px 20px rgba(109, 107, 107, 0.5),
+              0px 6px 6px rgba(209, 208, 209, 0.2);
   }
   
   .coach-img {
@@ -35,7 +38,7 @@
     height: 100px;
     object-fit: cover;
     margin-bottom: 15px;
-    border: 3px solid #7cfc00; /* Updated border color to match palette */
+    border: 3px solid #b3ff00; /* Updated border color to match palette */
   }
   
   .coach-info {
@@ -46,17 +49,17 @@
     font-size: 1.5rem;
     font-weight: bold;
     margin-bottom: 10px;
-    color: #ffff00; /* Updated to match text color in coach card */
+    color: #b3ff00 !important; /* Updated to match text color in coach card */
   }
   
   .coach-text {
     font-size: 1rem;
     margin-bottom: 20px;
-    color: #ffff00; /* Updated to match text color in coach card */
+    color: #d3d3d3 !important; /* Updated to match text color in coach card */
   }
   
   .book-session-btn {
-    background-color: #7cfc00; /* Updated to match palette */
+    background-color: #4d4b4b; /* Updated to match palette */
     color: #0d0d0d; /* Updated text color */
     padding: 10px 20px;
     border: none;
@@ -66,13 +69,10 @@
   }
   
   .book-session-btn:hover {
-    background-color: #ffff00; /* Updated to match palette */
+    background-color: #d3d3d3; /* Updated to match palette */
     color: #0d0d0d; /* Updated text color on hover */
     transform: scale(1.05);
   }
   
-  .book-session-btn:active {
-    background-color: #229b22; /* Updated to match palette */
-    color: #ffff00; /* Updated text color on active state */
-  }
+  
   
