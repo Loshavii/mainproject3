@@ -1,8 +1,7 @@
 // backend/models/User.js
 const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt');
 const authenticate = require('../middleware/authenticate'); // Authentication middleware
-const authorizeRole = require('../middleware/authorizeRole');
 
 const userSchema = new mongoose.Schema({
     firstName: { type: String, required: true },

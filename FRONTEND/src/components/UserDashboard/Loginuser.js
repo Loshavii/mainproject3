@@ -64,6 +64,8 @@ function Loginuser() {
                 navigate('/admin-dashboard'); // Navigate to Admin Dashboard
             } else if (role === 'user') {
                 navigate('/coach'); // Navigate to Coach Page
+            } else if (role === 'coach') {
+                navigate('/coach-profile');
             }
         } catch (error) {
             setErrorMessage(error.response?.data?.message || 'Invalid login credentials.');

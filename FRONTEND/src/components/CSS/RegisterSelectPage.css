@@ -1,10 +1,10 @@
-
+/* 
 
  .landing-container {
   display: flex;
   height: 100vh;
-  background-color: #181818 ; /* Background color */
-  color: #d3d3d3; /* Default text color */
+  background-color: #181818 ; 
+  color: #d3d3d3;
 }
 
 .left-content {
@@ -18,21 +18,21 @@
 
 .left-content h1 {
   font-size: 3em;
-  color: #d3d3d3; /* Heading color */
+  color: #d3d3d3; 
 }
 
 .left-content p {
   margin-top: 20px;
   font-size: 1.2em;
-  color: #d3d3d3; /* Text color */
+  color: #d3d3d3; 
   line-height: 1.6;
 }
 
 .find-coach-button {
   margin-top: 30px;
   padding: 10px 20px;
-  background-color: #4d4b4b; /* Updated to match palette */
-  color: #0d0d0d;/* Updated text color on hover */
+  background-color: #4d4b4b; 
+  color: #0d0d0d;
   transition: background-color 0.3s, transform 0.3s;
   border: none;
   border-radius: 5px;
@@ -41,8 +41,8 @@
 }
 
 .find-coach-button:hover {
-  background-color: #d3d3d3; /* Updated to match palette */
-    color: #0d0d0d; /* Updated text color on hover */
+  background-color: #d3d3d3; 
+    color: #0d0d0d;
     transform: scale(1.05);
 }
 
@@ -56,37 +56,37 @@
 
 .top-right {
   position: absolute;
-  top: 20px; /* Adjust for positioning */
+  top: 20px; 
   right: 20px;
 }
 
 .user-login-button {
   padding: 10px 20px;
-  background-color: #4d4b4b; /* Updated to match palette */
-  color: #0d0d0d;/* Updated text color on hover */
-  transition: background-color 0.3s, transform 0.3s; /* Text color */
+  background-color: #4d4b4b; 
+  color: #0d0d0d;
+  transition: background-color 0.3s, transform 0.3s; 
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 1em;
   display: flex;
-  align-items: center; /* Align icon and text */
+  align-items: center; 
 }
 
 .user-login-button .icon {
-  margin-right: 8px; /* Space between icon and text */
-  font-size: 1.2em; /* Icon size */
+  margin-right: 8px; 
+  font-size: 1.2em; 
 }
 
 .user-login-button:hover {
-  background-color: #d3d3d3; /* Updated to match palette */
-  color: #0d0d0d; /* Updated text color on hover */
-  transform: scale(1.05); /* Slight scale animation */
+  background-color: #d3d3d3; 
+  color: #0d0d0d; 
+  transform: scale(1.05); 
 }
 
 .bottom-right {
   position: absolute;
-  bottom: 20px; /* Adjust for positioning */
+  bottom: 20px; 
   right: 20px;
   display: flex;
   justify-content: flex-end;
@@ -110,8 +110,8 @@
 
 .coach-login-button {
   padding: 10px 20px;
-  background-color: #4d4b4b; /* Updated to match palette */
-  color: #0d0d0d;/* Updated text color on hover */
+  background-color: #4d4b4b; 
+  color: #0d0d0d;
   transition: background-color 0.3s, transform 0.3s;
   border: none;
   border-radius: 5px;
@@ -119,7 +119,122 @@
 }
 
 .coach-login-button:hover {
-  background-color: #d3d3d3; /* Updated to match palette */
-    color: #0d0d0d; /* Updated text color on hover */
+  background-color: #d3d3d3; 
+    color: #0d0d0d; 
     transform: scale(1.05);
+} */
+
+/* Main container styling */
+.landing-container {
+  display: flex;
+  height: 100vh;
+  background-color: #181818; /* Dark background */
+  color: #d3d3d3; /* Light text */
+}
+
+/* Left content styling */
+.left-content {
+  flex: 1;
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.left-content h1 {
+  font-size: 3em;
+  color: #d3d3d3;
+}
+
+.left-content p {
+  margin-top: 20px;
+  font-size: 1.2em;
+  color: #d3d3d3;
+  line-height: 1.6;
+}
+
+.find-coach-button {
+  margin-top: 30px;
+  padding: 10px 20px;
+  background-color: #4d4b4b;
+  color: #0d0d0d;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.find-coach-button:hover {
+  background-color: #d3d3d3;
+  color: #0d0d0d;
+  transform: scale(1.05);
+}
+
+/* Right content styling */
+.right-content {
+  position: relative;
+  width: 300px;
+  padding: 50px;
+}
+
+.top-right {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.user-login-button {
+  padding: 10px 20px;
+  background-color: #4d4b4b;
+  color: #0d0d0d;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.user-login-button:hover {
+  background-color: #d3d3d3;
+  color: #0d0d0d;
+  transform: scale(1.05);
+}
+
+/* Bottom-right coach card */
+.bottom-right {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
+.coachi-card {
+  padding: 20px;
+  background-color: #6b6e70;
+  color: #222629;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.coachi-card p {
+  margin-bottom: 15px;
+  font-size: 1em;
+  color: #86c232;
+}
+
+.coach-login-button {
+  padding: 10px 20px;
+  background-color: #4d4b4b;
+  color: #0d0d0d;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.coach-login-button:hover {
+  background-color: #d3d3d3;
+  color: #0d0d0d;
+  transform: scale(1.05);
 }

@@ -179,7 +179,7 @@ const RegisterCoach = () => {
                             Create my coach account
                         </button>
                         <p className="login-link">
-                            Already have an account? <Link to="/login">Sign In</Link>
+                            Already have an account? <Link to="/loginuser">Sign In</Link>
                         </p>
                         {successMessage && <p className="success-message">{successMessage}</p>}
                         {errorMessage && <p className="error-message">{errorMessage}</p>}
