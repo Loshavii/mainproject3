@@ -1,6 +1,6 @@
 // backend/models/User.js
 const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const authenticate = require('../middleware/authenticate'); // Authentication middleware
 
 const userSchema = new mongoose.Schema({

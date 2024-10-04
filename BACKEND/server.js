@@ -41,7 +41,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const userRoutes = require('./routes/user'); // Existing user routes
-const coachRoutes = require('./routes/coach'); // Existing coach routes for registration/login
+const coachRoutes = require('../BACKEND/routes/coach'); // Existing coach routes for registration/login
 const adminRoutes = require('./routes/admin'); // Existing admin routes for managing coaches
 const coachProfileRoutes = require('./routes/coachProfile'); // Existing coach profile routes
 const profileRoutes = require('./routes/userProfile'); // New profile setup routes for user data
@@ -53,7 +53,7 @@ const PORT = process.env.PORT || 8001;
 
 // CORS configuration options
 const corsOptions = {
-    origin: 'http://localhost:3000/', // Replace with the origin you want to allow
+    origin: 'http://localhost:3000', // Replace with the origin you want to allow
     methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowed methods
     allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
     credentials: true, // Allow credentials (cookies, authorization headers, etc.)

@@ -256,7 +256,7 @@
 const express = require('express');
 const router = express.Router();
 const Coach = require('../models/Coach');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const authenticateAndAuthorize = require('../middleware/authorize');
 
@@ -284,7 +284,7 @@ router.post('/register', async (req, res) => {
 
         // Hash the password
         const salt = await bcrypt.genSalt(10); // Generate a salt
-        const hashedPassword = await bcrypt.hash(plainPassword, salt);
+        const hashedPassword = await bcrypt.hash(password, salt);
 
         // Create new coach with hashed password
         const newCoach = new Coach({
@@ -301,7 +301,7 @@ router.post('/register', async (req, res) => {
         await newCoach.save();
 
         // Generate a token for the new coach
-        const token = jwt.sign({ id: newCoach._id, role: 'coach' }, process.env.JWT_SECRET, { expiresIn: '1h' });
+        const token = jwt.sign({ id: newCoach._id, role: 'coach' }, process.env.JWT_SECRET, { expiresIn: '3h' });
 
         // Respond with success message and token
         res.status(201).json({ token, message: 'Coach registration successful, pending admin approval' });
@@ -312,29 +312,65 @@ router.post('/register', async (req, res) => {
 });
 
 // Login Coach Endpoint (public route)
+// router.post('/loginn', async (req, res) => {
+//     try {
+//         const { email, password } = req.body;
+
+//         // Log incoming request body
+//         console.log('Login attempt:', req.body);
+
+//         // Find coach by email
+//         const coach = await Coach.findOne({ email });
+//         console.log('Coach found:', coach);
+
+//         // If coach not found, return invalid credentials
+//         if (!coach) {
+//             console.log('No coach found with this email.');
+//             return res.status(400).json({ error: 'Not coach' });
+//         }
+
+//         // Compare provided password with the stored hash
+//         const isMatch = await bcrypt.compare(password, coach.password);
+//         console.log('Password match:', isMatch);
+//         if (!isMatch) {
+//             console.log('Passwords do not match.');
+//             return res.status(401).json({ message: 'Not match' });
+//         }
+
+//         // Generate JWT token
+//         const token = jwt.sign({ id: coach._id, role: coach.role }, process.env.JWT_SECRET, { expiresIn: '1h' });
+//         res.status(200).json({ token, id: coach._id, role: coach.role, message: 'Login successful' });
+//     } catch (err) {
+//         console.error('Error logging in coach:', err);
+//         res.status(500).json({ error: 'Error logging in coach' });
+//     }
+// });
+
+
+
+// Login Coach (public route)
 router.post('/loginn', async (req, res) => {
     try {
         const { email, password } = req.body;
 
-        // Log incoming request body
-        console.log('Login attempt:', req.body);
-
         // Find coach by email
         const coach = await Coach.findOne({ email });
-        console.log('Coach found:', coach);
 
         // If coach not found, return invalid credentials
         if (!coach) {
-            console.log('No coach found with this email.');
-            return res.status(400).json({ error: 'Not coach' });
+            return res.status(400).json({ error: 'Coach not found' });
         }
 
-        // Compare provided password with the stored hash
-        const isMatch = await bcrypt.compare(password, coach.password);
-        console.log('Password match:', isMatch);
+        // Log provided password and stored hashed password
+        console.log('Provided password:', password);
+        console.log('Stored hashed password:', coach.password.trim()); // Trim any extra spaces
+
+        // Compare provided password with stored hashed password
+        const isMatch = await bcrypt.compare(password, coach.password.trim()); // Ensure trimming here as well
+        console.log('Password match:', isMatch); // Log whether the passwords match
+
         if (!isMatch) {
-            console.log('Passwords do not match.');
-            return res.status(401).json({ message: 'Not match' });
+            return res.status(401).json({ message: 'Password does not match' });
         }
 
         // Generate JWT token
@@ -345,6 +381,8 @@ router.post('/loginn', async (req, res) => {
         res.status(500).json({ error: 'Error logging in coach' });
     }
 });
+
+
 
 
 
@@ -390,109 +428,5 @@ router.post('/check-email', async (req, res) => {
 
 module.exports = router;
 
-
-
-
-// import express from 'express';
-// import bcrypt from 'bcryptjs';
-// import jwt from 'jsonwebtoken';
-// import Coach from '../models/Coach.js';
-// import authenticateAndAuthorize from '../middleware/authorize.js';
-
-// const router = express.Router();
-
-// // Register Coach Endpoint (public route)
-// router.post('/register', async (req, res) => {
-//     try {
-//         const { firstName, lastName, username, email, password, specialization } = req.body;
-
-//         const coachExists = await Coach.findOne({ email });
-//         if (coachExists) {
-//             return res.status(400).json({ error: 'Coach already exists' });
-//         }
-
-//         const hashedPassword = await bcrypt.hash(password, 10);
-//         const newCoach = new Coach({
-//             firstName,
-//             lastName,
-//             username,
-//             email,
-//             password: hashedPassword,
-//             specialization,
-//             status: 'pending' // Default status is pending until admin approval
-//         });
-
-//         await newCoach.save();
-
-//         const token = jwt.sign({ id: newCoach._id, role: 'coach' }, process.env.JWT_SECRET, { expiresIn: '1h' });
-//         res.status(201).json({ token, message: 'Coach registration successful, pending admin approval' });
-//     } catch (err) {
-//         res.status(500).json({ error: 'Error registering coach' });
-//     }
-// });
-
-// // Login Coach Endpoint (public route)
-// router.post('/login', async (req, res) => {
-//     try {
-//         const { email, password } = req.body;
-
-//         const coach = await Coach.findOne({ email });
-//         if (!coach) {
-//             return res.status(400).json({ error: 'Invalid credentials' });
-//         }
-
-//         const isMatch = await bcrypt.compare(password, coach.password);
-//         if (!isMatch) {
-//             return res.status(400).json({ error: 'Invalid credentials' });
-//         }
-
-//         const token = jwt.sign({ id: coach._id, role: coach.role }, process.env.JWT_SECRET, { expiresIn: '1h' });
-//         res.status(200).json({ token, id: coach._id, role: coach.role, message: 'Login successful' });
-//     } catch (err) {
-//         res.status(500).json({ error: 'Error logging in coach' });
-//     }
-// });
-
-// // Fetch pending coaches for admin approval (protected, admin-only route)
-// router.get('/coaches/pending', authenticateAndAuthorize(['admin']), async (req, res) => {
-//     try {
-//         const pendingCoaches = await Coach.find({ status: 'pending' });
-//         res.status(200).json(pendingCoaches);
-//     } catch (err) {
-//         res.status(500).json({ error: 'Error fetching pending coaches' });
-//     }
-// });
-
-// // Approve or reject a coach (protected, admin-only route)
-// router.put('/admin/coaches/:id/approve', authenticateAndAuthorize(['admin']), async (req, res) => {
-//     try {
-//         const { id } = req.params;
-//         const { status } = req.body;
-
-//         const coach = await Coach.findById(id);
-//         if (!coach) {
-//             return res.status(404).json({ error: 'Coach not found' });
-//         }
-
-//         coach.status = status;
-//         await coach.save();
-//         res.status(200).json({ message: `Coach ${status} successfully` });
-//     } catch (err) {
-//         res.status(500).json({ error: 'Error updating coach status' });
-//     }
-// });
-
-// // Check if coach email exists (public route)
-// router.post('/check-email', async (req, res) => {
-//     try {
-//         const { email } = req.body;
-//         const coach = await Coach.findOne({ email });
-//         res.status(200).json({ exists: !!coach, message: coach ? 'Email already exists' : 'Email is available' });
-//     } catch (err) {
-//         res.status(500).json({ error: 'Error checking email' });
-//     }
-// });
-
-// export default router;
 
 

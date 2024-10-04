@@ -1,6 +1,6 @@
 // backend/models/Coach.js
 const mongoose = require('mongoose');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
 const coachSchema = new mongoose.Schema({
     firstName: { type: String, required: true },
@@ -16,16 +16,6 @@ const coachSchema = new mongoose.Schema({
     // Add more coach-specific fields as needed
 }, { timestamps: true });
 
-// Password hash middleware
-coachSchema.pre('save', async function(next) {
-    if (!this.isModified('password')) {
-        return next(); // If the password isn't modified, skip hashing
-    }
-
-    const salt = await bcrypt.genSalt(10); // Generate salt
-    this.password = await bcrypt.hash(this.password, salt); // Hash the password
-    next();
-});
 
 // Create the Coach model from the schema
 const Coach = mongoose.model('Coach', coachSchema);
