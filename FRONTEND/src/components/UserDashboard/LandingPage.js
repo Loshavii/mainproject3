@@ -1,5 +1,4 @@
 
-
 import React from 'react';
 import '../CSS/Landing.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

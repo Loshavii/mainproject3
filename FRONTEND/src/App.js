@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import LandingPage from './components/UserDashboard/LandingPage';
 import RegisterUser from './components/UserDashboard/RegisterUser';
 import RegisterCoach from './components/UserDashboard/RegisterCoach';
-// import Login from './components/UserDashboard/Login';
+import Login from './components/UserDashboard/Login';
 import Coach from './components/UserDashboard/Coach';
 import CoachDetail from './components/UserDashboard/CoachDetail';
 import RegisterSelectPage from './components/UserDashboard/RegisterSelectPage';
@@ -26,7 +26,7 @@ function App() {
           <Route path="/register-select" element={<RegisterSelectPage />} />
           <Route path="/register-user" element={<RegisterUser />} />
           <Route path="/register-coach" element={<RegisterCoach />} />
-          {/* <Route path="/login" element={<Login />} /> */}
+          <Route path="/login" element={<Login />} />
           <Route path="/admin-dashboard" element={<AdminDashboard />} />
           <Route path="/coach" element={<Coach />} />
           <Route path="/coach/:coachEmail" element={<CoachDetail />} />

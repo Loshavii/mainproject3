@@ -1,8 +1,4 @@
 
-
-
-
-
 // src/components/CoachDashboard.js
 import React from 'react';
 import { useNavigate } from 'react-router-dom'; // Import useNavigate from react-router-dom
