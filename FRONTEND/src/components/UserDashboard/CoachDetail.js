@@ -14,7 +14,7 @@ function CoachDetail() {
     // Fetch coach profile based on coachEmail
     const fetchCoachProfile = async () => {
       try {
-        const response = await axios.get(`http://localhost:2003/api/coaches/profile/${coachEmail}`);
+        const response = await axios.get(`http://localhost:2003/api/coachesProfiles/profile/${coachEmail}`);
         setCoachProfile(response.data);
       } catch (error) {
         console.error('Error fetching coach profile:', error);
