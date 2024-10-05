@@ -131,6 +131,28 @@ router.get('/coaches/rejected', async (req, res) => {
     }
 });
 
+
+// Route to get coach details by ID
+router.get('/coaches/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        // Find the coach by ID
+        const coach = await Coach.findById(id);
+        if (!coach) {
+            return res.status(404).json({ message: 'Coach not found' });
+        }
+
+        // Return coach details
+        res.json(coach);
+    } catch (err) {
+        console.error('Error fetching coach details:', err.message);
+        res.status(500).json({ error: 'Error fetching coach details' });
+    }
+});
+
+
+
 module.exports = router;
 
 

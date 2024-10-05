@@ -77,7 +77,7 @@ mongoose.connect(MONGODB_URI, {
 app.use('/api/users', userRoutes); // Route for user-related operations
 app.use('/api/coaches', coachRoutes); // Route for coach-related registration/login operations
 app.use('/api/admin', adminRoutes); // Admin route for managing coach requests (approve/reject)
-app.use('/api/coaches', coachProfileRoutes); // Route for coach profile management
+app.use('/api/coachesProfiles', coachProfileRoutes); // Route for coach profile management
 app.use('/api/profiles', profileRoutes); // Route for handling profile setup (new)
 
 // Start the server
