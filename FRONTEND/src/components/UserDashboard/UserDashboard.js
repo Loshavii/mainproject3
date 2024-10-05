@@ -1,15 +1,40 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import { Search, Settings, MessageCircle } from 'lucide-react';
 import imge from '../personalcoach.jpg';
 import '../CSS/UserDashboard.css';
-import { useNavigate } from 'react-router-dom';
-
 
 
 
 const UserDashboard = () => {
+  const [user, setUser] = useState(null); // State to hold user details
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const userId = sessionStorage.getItem('id'); // Get user ID from sessionStorage
+        const token = sessionStorage.getItem('token'); // Get token from sessionStorage
+        if (userId && token) {
+          const response = await axios.get(`http://localhost:2003/api/users/users/${userId}`, {
+            headers: {
+              Authorization: `Bearer ${token}` // Pass token in headers
+            }
+          });
+          setUser(response.data); // Set user data from API response
+        } else {
+          navigate('/login'); // If no ID or token, redirect to login
+        }
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    };
+
+    fetchUserData();
+  }, [navigate]);
+
 
   return (
     <div className="user-profile">
@@ -25,14 +50,17 @@ const UserDashboard = () => {
       </header>
 
       <main>
-        <section className="welcome-section">
-          <h2>Hello Jesse</h2>
-          <p>
-            This is your profile page. You can see the progress you've made with
-            your work and manage your projects or assigned tasks.
-          </p>
+      <section className="welcome-section">
+          {user && (
+            <>
+              <h2>Hello {user.firstName} {user.lastName}</h2>
+              <p>{user.email}</p>
+            </>
+          )}
+          <p>This is your profile page. You can see the progress you've made with your work and manage your projects or assigned tasks.</p>
           <button className="edit-profile-btn">Edit profile</button>
         </section>
+
 
         <div className="profile-grid">
           <div className="account-info">

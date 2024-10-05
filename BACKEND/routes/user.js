@@ -123,6 +123,25 @@ router.put('/users/:id/deactivate', async (req, res) => {
     }
 });
 
+
+router.get('/users/:id', async (req, res) => {
+    try {
+        const { id } = req.params;
+
+        // Find the user by ID
+        const user = await User.findById(id);
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        // Return user details
+        res.json(user);
+    } catch (err) {
+        console.error('Error fetching user details:', err.message);
+        res.status(500).json({ error: 'Error fetching user details' });
+    }
+});
+
 module.exports = router;
 
 
