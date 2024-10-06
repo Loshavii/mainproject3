@@ -10,6 +10,29 @@ import '../CSS/UserDashboard.css';
 
 const UserDashboard = () => {
   const [user, setUser] = useState(null); // State to hold user details
+  const [formData, setFormData] = useState({
+    firstName: '',
+    email: '',
+    dateOfBirth: '',
+    age: '',
+    gender: '',
+    phone: '',
+    height: '',
+    weight: '',
+    bloodType: '',
+    allergies: '',
+    chronicConditions: '',
+    medications: '',
+    dietaryPreferences: '',
+    exerciseRoutine: '',
+    sleepPattern: '',
+    targetWeight: '',
+    fitnessObjectives: '',
+    bloodPressure: '',
+    heartRate: '',
+    bloodSugarLevels: ''
+  });
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -35,6 +58,21 @@ const UserDashboard = () => {
     fetchUserData();
   }, [navigate]);
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({ ...prevData, [name]: value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post('http://localhost:2003/api/profiles/', formData);
+      alert('Profile created successfully!');
+      setUser(response.data); // Show submitted data
+    } catch (error) {
+      console.error('Error creating profile:', error);
+    }
+  };
 
   return (
     <div className="user-profile">
@@ -75,31 +113,31 @@ const UserDashboard = () => {
             
               <form>
 
-              <div class="form-row">
-                <div class="form-group">
-                  <label class="label">First Name</label>
+              <div className="form-row">
+                <div className="form-group">
+                  <label className="label">First Name</label>
                   <input type="text" required />
                 </div>
-                <div class="form-group">
-                  <label class="label">Email</label>
+                <div className="form-group">
+                  <label className="label">Email</label>
                   <input type="email" required />
                 </div>
               </div>
 
-              <div class="form-row">
-                <div class="form-group">
-                  <label class="label">Date of Birth</label>
+              <div className="form-row">
+                <div className="form-group">
+                  <label className="label">Date of Birth</label>
                   <input type="date" required />
                 </div>
-                <div class="form-group">
-                  <label class="label">Age</label>
+                <div className="form-group">
+                  <label className="label">Age</label>
                   <input type="number" required />
                 </div>
               </div>
 
-              <div class="form-row">
-                <div class="form-group">
-                  <label class="label">Gender</label>
+              <div className="form-row">
+                <div className="form-group">
+                  <label className="label">Gender</label>
                   <select required>
                     <option value="">Select Gender</option>
                     <option value="male">Male</option>
@@ -107,106 +145,106 @@ const UserDashboard = () => {
                     <option value="other">Other</option>
                   </select>
                 </div>
-                <div class="form-group">
-                  <label class="label">Phone</label>
+                <div className="form-group">
+                  <label className="label">Phone</label>
                   <input type="tel" required />
                 </div>
               </div>
 
-              <div class="form-row">
-                <div class="form-group">
-                  <label class="label">Phone</label>
+              <div className="form-row">
+                <div className="form-group">
+                  <label className="label">Phone</label>
                   <input type="tel" required />
                 </div>
-                <div class="form-group">
-                  <label class="label">Height (cm)</label>
+                <div className="form-group">
+                  <label className="label">Height (cm)</label>
                   <input type="number" required />
                 </div>
               </div>
 
-              <div class="form-row">
-                <div class="form-group">
-                  <label class="label">Weight (kg)</label>
+              <div className="form-row">
+                <div className="form-group">
+                  <label className="label">Weight (kg)</label>
                   <input type="number" required />
                 </div>
-                <div class="form-group">
-                  <label class="label">Blood Type</label>
+                <div className="form-group">
+                  <label className="label">Blood Type</label>
                   <input type="text" />
                 </div>
               </div>
 
-              <div class="form-row">
-                <div class="form-group">
-                  <label class="label">Allergies</label>
+              <div className="form-row">
+                <div className="form-group">
+                  <label className="label">Allergies</label>
                   <input type="text" />
                 </div>
-                <div class="form-group">
-                  <label class="label">Chronic Conditions</label>
-                  <input type="text" />
-                </div>
-              </div>
-
-              <div class="form-row">
-                <div class="form-group">
-                  <label class="label">Medications</label>
-                  <input type="text" />
-                </div>
-                <div class="form-group">
-                  <label class="label">Dietary Preferences</label>
+                <div className="form-group">
+                  <label className="label">Chronic Conditions</label>
                   <input type="text" />
                 </div>
               </div>
 
-              <div class="form-row">
-                <div class="form-group">
-                  <label class="label">Exercise Routine</label>
+              <div className="form-row">
+                <div className="form-group">
+                  <label className="label">Medications</label>
                   <input type="text" />
                 </div>
-                <div class="form-group">
-                  <label class="label">Sleep Pattern (hours)</label>
+                <div className="form-group">
+                  <label className="label">Dietary Preferences</label>
+                  <input type="text" />
+                </div>
+              </div>
+
+              <div className="form-row">
+                <div className="form-group">
+                  <label className="label">Exercise Routine</label>
+                  <input type="text" />
+                </div>
+                <div className="form-group">
+                  <label className="label">Sleep Pattern (hours)</label>
                   <input type="number" />
                 </div>
               </div>
 
-              <div class="form-row">
-                <div class="form-group">
-                  <label class="label">Target Weight (kg)</label>
+              <div className="form-row">
+                <div className="form-group">
+                  <label className="label">Target Weight (kg)</label>
                   <input type="number" />
                 </div>
-                <div class="form-group">
-                  <label class="label">Fitness Objectives</label>
+                <div className="form-group">
+                  <label className="label">Fitness Objectives</label>
                   <input type="text" />
                 </div>
               </div>
 
-              <div class="form-row">
-                <div class="form-group">
-                  <label class="label">Blood Pressure</label>
+              <div className="form-row">
+                <div className="form-group">
+                  <label className="label">Blood Pressure</label>
                   <input type="text" />
                 </div>
-                <div class="form-group">
-                  <label class="label">Heart Rate</label>
+                <div className="form-group">
+                  <label className="label">Heart Rate</label>
                   <input type="number" />
                 </div>
               </div>
 
-              <div class="form-row">
-                <div class="form-group">
-                  <label class="label">Blood Sugar Levels</label>
+              <div className="form-row">
+                <div className="form-group">
+                  <label className="label">Blood Sugar Levels</label>
                   <input type="text" />
                 </div>
               </div>
 
-              <button type="submit" class="btn">Submit</button>
+              <button type="submit" className="btn">Submit</button>
               </form>
             </div>
           </div>
 
           <div className="profile-card">
-            <div class="form-row">
+            <div className="form-row">
             <img src={imge} alt="Profile" className="profile-image" />
             </div>
-            <div class="form-row">
+            <div className="form-row">
             <div className="coach-section">
               <p className="coach-info">Find a Coach to help you reach your fitness goals.</p>
               <button className="next-btn" onClick={() => navigate('/coach')}>
