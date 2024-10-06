@@ -62,7 +62,7 @@
   }
   
   .button-group button.update-button {
-    background-color: #4d4b4b; /* Blue color for the update button */
+    background-color: #4d4b4b; 
   }
   
   .button-group button:hover {
@@ -70,3 +70,12 @@
     color: #0d0d0d; 
     transform: scale(1.05);
   }
+
+  .welcome-note {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #b3ff00;
+    margin-bottom: 20px;
+  }
+  
