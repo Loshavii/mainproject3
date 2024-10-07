@@ -50,7 +50,7 @@ const CoachDashboard = () => {
         </div>
         <nav className="nav-links">
           <a href="/dashboard" className="active">Dashboard</a>
-          <a href="/members">My Members</a>
+          {/* <a href="/members">My Members</a> */}
         </nav>
       </aside>
       <main className="main-content">
@@ -59,10 +59,14 @@ const CoachDashboard = () => {
         </header>
         <section className="onboarding-section">
           <div className="onboarding-text">
-            <h3>Coach Onboarding</h3>
+            <h3>🌟 Welcome to Your User Dashboard! 🌟
+
+</h3>
             <p>
-              You’re a few steps away from getting started as a coach!
-              Make sure to fill out your assessment to ensure you get the best possible matches with new alumni.
+            You're just a few steps away from achieving your fitness goals! To get the best possible matches with coaches, please take a moment to fill out your assessment. This will help us understand your needs and connect you with the right coach to support your journey.
+            </p>
+            <p>
+            Let’s get started on your path to success! 💪✨
             </p>
           </div>
           <div className="onboarding-buttons">
