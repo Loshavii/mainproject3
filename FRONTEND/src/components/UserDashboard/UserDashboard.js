@@ -35,6 +35,9 @@ const CoachDashboard = () => {
     navigate('/profile-setup');
   };
 
+  const goToCoachcard = () => {
+    navigate('/coach');
+  };
   return (
     <div className="dashboard-container">
       <aside className="sidebar">
@@ -71,7 +74,7 @@ const CoachDashboard = () => {
           </div>
           <div className="onboarding-buttons">
             <button className="btn complete-profile" onClick={goToProfile}>Complete Your Profile</button>
-            <button className="btn take-assessment">Take Assessment</button>
+            <button className="btn take-assessment" onClick={goToCoachcard}>Find the Coach</button>
           </div>
         </section>
         <section className="stats-section">
