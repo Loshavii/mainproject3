@@ -69,7 +69,7 @@ const RegisterUser = () => {
                 email: '',
                 password: ''
             });
-            navigate('/coach'); 
+            navigate('/user-dashboard'); 
         } catch (error) {
             setErrorMessage(error.response?.data?.error || 'Something went wrong. Please try again.');
             setSuccessMessage('');
