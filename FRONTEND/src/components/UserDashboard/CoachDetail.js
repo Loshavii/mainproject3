@@ -51,7 +51,7 @@ function CoachDetail() {
           </div>
           <div className="buttons-row">
             <button className="follow-button">Follow</button>
-            <button className="send-request-button" onClick={handleSendRequest}>Send Request</button>
+            <button className="send-request-button" onClick={() => navigate('/profile-setup')}>Send Request</button>
           </div>
         </div>
         <div className="right-side">
@@ -75,7 +75,7 @@ function CoachDetail() {
       </div>
 
      
-
+{/* 
       {showModal && (
         <div className="modal-overlay">
           <div className="modal-card">
@@ -89,7 +89,7 @@ function CoachDetail() {
             <button className="modal-close-button" onClick={handleCloseModal}>Close</button>
           </div>
         </div>
-      )}
+      )} */}
 
     </div>
   );

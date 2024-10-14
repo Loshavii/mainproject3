@@ -514,7 +514,7 @@ function ProfileSetup() {
           />
         </div>
 
-        <h2 className="form-title">Contact Options</h2>
+        {/* <h2 className="form-title">Contact Options</h2>
         <div className="form-group">
           <label>Contact Option:</label>
           <div className="contact-options">
@@ -537,7 +537,38 @@ function ProfileSetup() {
               Contact via Video Interaction
             </label>
           </div>
-        </div>
+        </div> */}
+
+
+<div className="contact-options-container">
+  <h2 className="form-title">Contact Options</h2>
+  <div className="form-group">
+    <label className="form-label">How would you like to contact the coach?</label>
+    <div className="contact-options">
+      <label className="contact-option">
+        <input
+          type="radio"
+          name="contactOption"
+          value="chat"
+          onChange={handleChange}
+          className="custom-radio"
+        />
+        <span className="option-label">💬 Contact via Chat</span>
+      </label>
+      <label className="contact-option">
+        <input
+          type="radio"
+          name="contactOption"
+          value="video"
+          onChange={handleChange}
+          className="custom-radio"
+        />
+        <span className="option-label">📹 Contact via Video Interaction</span>
+      </label>
+    </div>
+  </div>
+</div>
+
 
         <div className="button-group">
           <button type="submit">Save Profile</button>
