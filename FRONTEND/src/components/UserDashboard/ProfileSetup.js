@@ -514,30 +514,7 @@ function ProfileSetup() {
           />
         </div>
 
-        {/* <h2 className="form-title">Contact Options</h2>
-        <div className="form-group">
-          <label>Contact Option:</label>
-          <div className="contact-options">
-            <label>
-              <input
-                type="radio"
-                name="contactOption"
-                value="chat"
-                onChange={handleChange}
-              /> 
-              Contact via Chat
-            </label>
-            <label>
-              <input
-                type="radio"
-                name="contactOption"
-                value="video"
-                onChange={handleChange}
-              /> 
-              Contact via Video Interaction
-            </label>
-          </div>
-        </div> */}
+        
 
 
 <div className="contact-options-container">

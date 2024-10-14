@@ -68,7 +68,7 @@ const CoachDashboard = () => {
           </div>
           <div className="onboarding-buttons">
             <button className="btn complete-profile" onClick={goToProfile}>Complete Your Profile</button>
-            <button className="btn take-assessment">Take Assessment</button>
+            <button className="btn take-assessment">View Requests</button>
           </div>
         </section>
         <section className="stats-section">
