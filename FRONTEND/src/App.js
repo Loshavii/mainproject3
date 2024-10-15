@@ -17,7 +17,7 @@ import CoachDashboard from './components/CoachDashboard/CoachDashboard';
 import UserManagement from './components/AdminDashboard/UserManagement';
 import CoachPro from './components/CoachDashboard/CoachProfile'; // Import CoachProfile
 import UserDashboard from './components/UserDashboard/UserDashboard';
-
+import ProfileCard from './components/UserDashboard/ProfileCard';
 
 
 function App() {
@@ -41,6 +41,7 @@ function App() {
           {/* Add CoachProfile route */}
           <Route path="/coach-profile" element={<CoachPro />} />
           <Route path="/user-dashboard" element={<UserDashboard />} />
+          <Route path="/profile-card" element={<ProfileCard />} />
         </Routes>
       </div>
     </Router>
