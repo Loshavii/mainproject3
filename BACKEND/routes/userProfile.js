@@ -29,6 +29,21 @@ router.post('/', async (req, res) => {
   });
   
 
+// router.get('/:email', async (req, res) => {
+//     try {
+//       const email = req.params.email;
+//       console.log('Received email:', email); // Debugging line to check the email
+//       const userProfileData = await UserProfile.findOne({ email: new RegExp(`^${email}$`, 'i') }); // Case-insensitive search
+//       if (!userProfileData) {
+//         return res.status(404).json({ message: 'Profile not found' });
+//       }
+//       res.json(userProfileData);
+//     } catch (error) {
+//       console.error('Error fetching profile by email:', error);
+//       res.status(500).json({ message: 'Server error' });
+//     }
+//   });
+
 
 // Route to get all user profiles
 router.get('/', async (req, res) => {
