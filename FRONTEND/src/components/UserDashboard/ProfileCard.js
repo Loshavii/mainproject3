@@ -7,32 +7,23 @@ export default function ProfileCard() {
 
   // Fetch data from the API
   const fetchProfiles = async () => {
-    const coachEmail = sessionStorage.getItem('coachEmail'); // Get coach email from sessionStorage
+    const coachEmail = sessionStorage.getItem('coachEmail'); 
     if (!coachEmail) {
       console.error('Coach email is not found in sessionStorage.');
-      return; // Exit if email is not found
+      return; 
     }
 
     try {
       // Use template literal correctly for the URL
       const response = await axios.get(`http://localhost:2003/api/profiles/coach/${coachEmail}`);
       setProfiles(response.data);
-      // After fetching, send data to MongoDB
-      await storeProfilesInDB(response.data);
+      
     } catch (error) {
       console.error('Error fetching profiles:', error);
     }
   };
 
-  // Store fetched profiles in MongoDB
-  const storeProfilesInDB = async (data) => {
-    try {
-      await axios.post('http://localhost:2003/api/profiles/store', data);
-      console.log('Profiles stored successfully');
-    } catch (error) {
-      console.error('Error storing profiles in DB:', error);
-    }
-  };
+
 
   useEffect(() => {
     fetchProfiles();
@@ -63,8 +54,7 @@ export default function ProfileCard() {
             <p className="unique-profile-detail">Blood Sugar Levels: {profile.bloodSugarLevels} mg/dL</p>
             <p className="unique-profile-detail">Contact Option: {profile.contactOption}</p>
             <p className="unique-profile-status">Status: {profile.status}</p>
-            {/* <p className="unique-profile-date">Created At: {new Date(profile.createdAt).toLocaleString()}</p>
-            <p className="unique-profile-date">Updated At: {new Date(profile.updatedAt).toLocaleString()}</p> */}
+            
           </div>
         ))
       ) : (
