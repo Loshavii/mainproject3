@@ -3,7 +3,16 @@ const UserProfile = require('../models/UserProfile');
 const router = express.Router();
 const coachesProfile = require('../models/CoachProfile');
 
-
+// Route to create a new user profile
+// router.post('/', async (req, res) => {
+//     try {
+//         const newUserProfile = new UserProfile(req.body);
+//         await newUserProfile.save();
+//         res.status(201).json(newUserProfile);
+//     } catch (error) {
+//         res.status(400).json({ error: error.message });
+//     }
+// });
 
 
 router.post('/', async (req, res) => {
@@ -121,24 +130,26 @@ router.get('/pending', async (req, res) => {
 
 
 
-// Route to approve a user profile
-router.patch('/:id/approve', async (req, res) => {
-    try {
-        const profile = await UserProfile.findByIdAndUpdate(
-            req.params.id,
-            { approvalStatus: 'approved' },
-            { new: true }
-        );
-        if (!profile) {
-            return res.status(404).json({ message: 'Profile not found' });
-        }
-        res.status(200).json({ message: 'Profile approved', profile });
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
-});
 
-// Route to decline a user profile
+router.put('/:id/approve', async (req, res) => {
+    try {
+      const updatedProfile = await UserProfile.findByIdAndUpdate(
+        req.params.id,
+        { status: 'approved' },
+        { new: true }
+      );
+  
+      if (!updatedProfile) {
+        return res.status(404).json({ error: 'Profile not found' });
+      }
+  
+      res.json(updatedProfile);
+    } catch (error) {
+      console.error('Error approving profile:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
+  // Route to decline a user profile
 router.patch('/:id/decline', async (req, res) => {
     try {
         const profile = await UserProfile.findByIdAndUpdate(

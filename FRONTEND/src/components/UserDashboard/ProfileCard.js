@@ -1,6 +1,7 @@
+
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import './ProfileCard.css'; // Import the CSS file
+import './ProfileCard.css'; // Import the CSS file for styling
 
 export default function ProfileCard() {
   const [profiles, setProfiles] = useState([]);
@@ -14,16 +15,24 @@ export default function ProfileCard() {
     }
 
     try {
-      // Use template literal correctly for the URL
       const response = await axios.get(`http://localhost:2003/api/profiles/coach/${coachEmail}`);
       setProfiles(response.data);
-      
     } catch (error) {
       console.error('Error fetching profiles:', error);
     }
   };
 
-
+  // Function to update profile status with PUT method
+  const updateProfileStatus = async (profileId, status) => {
+    const url = `http://localhost:2003/api/profiles/${profileId}/${status === 'approved' ? 'approve' : 'decline'}`;
+    try {
+      await axios.put(url);  // Send a PUT request to update status
+      fetchProfiles();  // Refresh profiles after updating status
+      console.log(`Profile status updated to ${status}`);
+    } catch (error) {
+      console.error(`Error updating profile status to ${status}:`, error);
+    }
+  };
 
   useEffect(() => {
     fetchProfiles();
@@ -54,7 +63,20 @@ export default function ProfileCard() {
             <p className="unique-profile-detail">Blood Sugar Levels: {profile.bloodSugarLevels} mg/dL</p>
             <p className="unique-profile-detail">Contact Option: {profile.contactOption}</p>
             <p className="unique-profile-status">Status: {profile.status}</p>
-            
+
+            {/* Accept and Reject buttons */}
+            <button
+              className="unique-profile-accept"
+              onClick={() => updateProfileStatus(profile._id, 'approved')}
+            >
+              Accept
+            </button>
+            <button
+              className="unique-profile-reject"
+              onClick={() => updateProfileStatus(profile._id, 'declined')}
+            >
+              Reject
+            </button>
           </div>
         ))
       ) : (
