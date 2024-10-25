@@ -60,16 +60,7 @@ router.get('/profile/:email', async (req, res) => {
     }
 });
 
-// GET request to fetch all coach profiles (optional)
-// router.get('/profiles', async (req, res) => {
-//     try {
-//         const coaches = await CoachProfile.find();
-//         res.status(200).json(coaches);
-//     } catch (error) {
-//         console.error('Error fetching coach profiles:', error);
-//         res.status(500).json({ message: 'Server Error' });
-//     }
-// });
+
 
 module.exports = router;
 

@@ -3,16 +3,7 @@ const UserProfile = require('../models/UserProfile');
 const router = express.Router();
 const coachesProfile = require('../models/CoachProfile');
 
-// Route to create a new user profile
-// router.post('/', async (req, res) => {
-//     try {
-//         const newUserProfile = new UserProfile(req.body);
-//         await newUserProfile.save();
-//         res.status(201).json(newUserProfile);
-//     } catch (error) {
-//         res.status(400).json({ error: error.message });
-//     }
-// });
+
 
 
 router.post('/', async (req, res) => {
@@ -79,46 +70,6 @@ router.get('/coach/:coachEmail', async (req, res) => {
   
   
 
-// Route to get profiles associated with a specific coach email
-// router.get('/profiles/coach/:email', async (req, res) => {
-//     const { email} = req.params;
-//     try {
-//       // Fetch profiles linked to the given coach email
-//       const profiles = await coachesProfile.find({ email });
-  
-//       // If no profiles are found, send a 404 response
-//       if (!profiles || profiles.length === 0) {
-//         return res.status(404).json({ message: 'No profiles found for this coach' });
-//       }
-  
-//       // Return the profiles in the response
-//       res.json(profiles);
-//     } catch (error) {
-//       // Handle any errors
-//       console.error('Error fetching profiles:', error.stack); // Log the full error stack
-//       console.error('Error fetching profiles:', error);
-//       res.status(500).json({ message: 'Server error' });
-//     }
-//   });
-  
-
-
-// router.get('/:email', async (req, res) => {
-//     try {
-//       const email = req.params.email;
-//       console.log('Received email:', email); // Debugging line to check the email
-//       const userProfileData = await UserProfile.findOne({ email: new RegExp(`^${email}$`, 'i') }); // Case-insensitive search
-//       if (!userProfileData) {
-//         return res.status(404).json({ message: 'Profile not found' });
-//       }
-//       res.json(userProfileData);
-//     } catch (error) {
-//       console.error('Error fetching profile by email:', error);
-//       res.status(500).json({ message: 'Server error' });
-//     }
-//   });
-
-
 // Route to get all user profiles
 router.get('/', async (req, res) => {
     try {
@@ -129,18 +80,7 @@ router.get('/', async (req, res) => {
     }
 });
 
-// // Route to get a specific user profile by ID
-// router.get('/:id', async (req, res) => {
-//     try {
-//         const profile = await UserProfile.findById(req.params.id);
-//         if (!profile) {
-//             return res.status(404).json({ message: 'Profile not found' });
-//         }
-//         res.status(200).json(profile);
-//     } catch (error) {
-//         res.status(500).json({ error: error.message });
-//     }
-// });
+
 
 // Route to update a user profile by ID
 router.put('/:id', async (req, res) => {
