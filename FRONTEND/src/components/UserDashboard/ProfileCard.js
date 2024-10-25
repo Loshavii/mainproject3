@@ -166,46 +166,43 @@
 
 // export default ProfileCard;
 
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
 import '../CSS/ProfileCard.css'; // Import your CSS file for styling
 
 function ProfileCard() {
-  const { email } = useParams(); // Get the email from the route parameter
   const [profileData, setProfileData] = useState(null);
   const [errorMessage, setErrorMessage] = useState('');
 
-  // Fetch profile data based on the email from the URL
+  // Fetch profile data based on the coachEmail stored in sessionStorage
   useEffect(() => {
+    // Retrieve coachEmail from sessionStorage
+    const coachEmail = sessionStorage.getItem('coachEmail');
+    
+    console.log('Coach email from sessionStorage:', coachEmail); // For debugging
+
+    // Function to fetch profile data
     const fetchProfileData = async () => {
       try {
-        // Use encodeURIComponent to handle special characters like '@'
-        const response = await axios.get(`http://localhost:2003/api/profiles/${encodeURIComponent(email)}`);
+        // Fetch the profile using the coachEmail
+        const response = await axios.get(`http://localhost:2003/api/profiles/coach/${coachEmail}`);
+        console.log('Profile data fetched:', response.data);
         setProfileData(response.data);
       } catch (error) {
         console.error('Error fetching profile data:', error);
-        // Enhanced error handling with specific checks
-        if (error.response) {
-          if (error.response.status === 404) {
-            setErrorMessage('Profile not found for this email.');
-          } else {
-            setErrorMessage(`Server responded with status: ${error.response.status}`);
-          }
-        } else if (error.request) {
-          setErrorMessage('No response received from server.');
-        } else {
-          setErrorMessage(`Error setting up the request: ${error.message}`);
-        }
+        setErrorMessage('Error fetching profile data.');
       }
     };
 
-    if (email) {
+    // Check if coachEmail exists and fetch data
+    if (coachEmail) {
       fetchProfileData();
     } else {
-      setErrorMessage('No email provided.');
+      console.warn('No coachEmail found in sessionStorage.');
+      setErrorMessage('No coachEmail provided.');
     }
-  }, [email]);
+  }, []); // Empty dependency array ensures this runs only once when the component mounts
 
   // Error message handling
   if (errorMessage) {
@@ -225,7 +222,7 @@ function ProfileCard() {
         <p className="profile-tagline">{profileData.email} | {profileData.phone}</p>
       </div>
 
-      {/* Personal, Health, Lifestyle, and Fitness Goals Sections */}
+      {/* Personal Information Section */}
       <div className="profile-section">
         <h3>Personal Information</h3>
         <div className="profile-grid">
@@ -240,8 +237,91 @@ function ProfileCard() {
         </div>
       </div>
 
-      {/* Render other sections similarly like Health, Lifestyle, etc. */}
+      {/* Health Information Section */}
+      <div className="profile-section">
+        <h3>Health Information</h3>
+        <div className="profile-grid">
+          <div className="profile-item">
+            <strong>Height:</strong>
+            <span>{profileData.height} cm</span>
+          </div>
+          <div className="profile-item">
+            <strong>Weight:</strong>
+            <span>{profileData.weight} kg</span>
+          </div>
+          <div className="profile-item">
+            <strong>Blood Type:</strong>
+            <span>{profileData.bloodType}</span>
+          </div>
+          <div className="profile-item">
+            <strong>Allergies:</strong>
+            <span>{profileData.allergies}</span>
+          </div>
+          <div className="profile-item">
+            <strong>Chronic Conditions:</strong>
+            <span>{profileData.chronicConditions}</span>
+          </div>
+          <div className="profile-item">
+            <strong>Medications:</strong>
+            <span>{profileData.medications}</span>
+          </div>
+        </div>
+      </div>
 
+      {/* Lifestyle Information Section */}
+      <div className="profile-section">
+        <h3>Lifestyle Information</h3>
+        <div className="profile-grid">
+          <div className="profile-item">
+            <strong>Dietary Preferences:</strong>
+            <span>{profileData.dietaryPreferences}</span>
+          </div>
+          <div className="profile-item">
+            <strong>Exercise Routine:</strong>
+            <span>{profileData.exerciseRoutine}</span>
+          </div>
+          <div className="profile-item">
+            <strong>Sleep Pattern:</strong>
+            <span>{profileData.sleepPattern} hours</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Fitness Goals Section */}
+      <div className="profile-section">
+        <h3>Fitness Goals</h3>
+        <div className="profile-grid">
+          <div className="profile-item">
+            <strong>Target Weight:</strong>
+            <span>{profileData.targetWeight} kg</span>
+          </div>
+          <div className="profile-item">
+            <strong>Fitness Objectives:</strong>
+            <span>{profileData.fitnessObjectives}</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Health Metrics Section */}
+      <div className="profile-section">
+        <h3>Health Metrics</h3>
+        <div className="profile-grid">
+          <div className="profile-item">
+            <strong>Blood Pressure:</strong>
+            <span>{profileData.bloodPressure}</span>
+          </div>
+          <div className="profile-item">
+            <strong>Heart Rate:</strong>
+            <span>{profileData.heartRate} bpm</span>
+          </div>
+          <div className="profile-item">
+            <strong>Blood Sugar Levels:</strong>
+            <span>{profileData.bloodSugarLevels}</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Contact Option Section */}
       <div className="profile-section">
         <h3>Contact Option</h3>
         <div className="profile-grid">
