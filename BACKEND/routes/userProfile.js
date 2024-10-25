@@ -149,12 +149,14 @@ router.put('/:id/approve', async (req, res) => {
       res.status(500).json({ error: 'Internal Server Error' });
     }
   });
+  
   // Route to decline a user profile
-router.patch('/:id/decline', async (req, res) => {
+
+router.put('/:id/decline', async (req, res) => {
     try {
         const profile = await UserProfile.findByIdAndUpdate(
             req.params.id,
-            { approvalStatus: 'declined' },
+            { status: 'declined' },  // Update the status field
             { new: true }
         );
         if (!profile) {
@@ -162,6 +164,7 @@ router.patch('/:id/decline', async (req, res) => {
         }
         res.status(200).json({ message: 'Profile declined', profile });
     } catch (error) {
+        console.error('Error declining profile:', error);
         res.status(500).json({ error: error.message });
     }
 });
