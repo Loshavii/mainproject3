@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../CSS/Login.css';
@@ -53,12 +52,13 @@ function Login() {
         try {
             // Updated URL to coach login endpoint
             const response = await axios.post('http://localhost:2003/api/coaches/login', formData);
-            const { token, id, role } = response.data;
+            const { token, id, role } = response.data; // Extract token, id, and role
 
             // Save login data to sessionStorage
             sessionStorage.setItem('token', token);
             sessionStorage.setItem('id', id);
             sessionStorage.setItem('role', role);
+            sessionStorage.setItem('coachEmail', formData.email); // Store email directly from formData
 
             setErrorMessage('');
             setSuccessMessage('Login successful! Redirecting...');
@@ -121,5 +121,3 @@ function Login() {
 }
 
 export default Login;
-
-
