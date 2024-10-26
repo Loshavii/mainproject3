@@ -131,7 +131,7 @@
   
   input:focus {
     outline: none;
-    border: 2px solid #22d3ee; /* Change the outline color on focus */
+    border: 2px solid #22d3ee;
   }
   
   .profile-card {
@@ -139,10 +139,10 @@
   }
   
   .profile-image {
-    width: 100%; /* Make the image take up the full width of its container */
-    height: auto; /* Adjust the height based on the width to maintain aspect ratio */
-    border-radius: 0; /* Remove the circular border */
-    margin: 0 auto 1rem; /* Keep the margin below the image */
+    width: 100%; 
+    height: auto; 
+    border-radius: 0;
+    margin: 0 auto 1rem; 
 }
   
   .profile-actions {
