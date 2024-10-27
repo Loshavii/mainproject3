@@ -42,6 +42,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useSpring, animated, config } from 'react-spring';
 import { motion } from 'framer-motion';
 import { Facebook, Twitter, Linkedin, ChevronDown } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import '../CSS/Landing.css';
 import img from '../logo.png';
 import img4 from './img4.webp';
@@ -100,6 +101,8 @@ const SocialLinks = () => {
 
 // HeroContent Component
 const HeroContent = () => {
+  const navigate = useNavigate();
+
   const titleAnimation = useSpring({
     from: { opacity: 0, transform: 'translateY(30px)' },
     to: { opacity: 1, transform: 'translateY(0)' },
@@ -113,21 +116,26 @@ const HeroContent = () => {
     config: config.gentle,
   });
 
+  const handleGetStartedClick = () => {
+    navigate('/register-select');
+  };
+
   return (
     <div className="hero-content">
       <animated.span style={titleAnimation} className="hero-subtitle">
-    FIND YOUR FITNESS JOURNEY
-</animated.span>
-<animated.h1 style={titleAnimation} className="hero-title">
-    Reclaim Your Mind, Body & Strength
-</animated.h1>
-<animated.p style={descriptionAnimation} className="hero-description">
-    Discover the balance between strength and wellness. Empower yourself with personalized coaching, real-time progress tracking, and a community built to support your goals. 
-</animated.p>
-<animated.div style={descriptionAnimation}>
-    <button className="get-started-button">Start Your Journey</button>
-</animated.div>
-
+        FIND YOUR FITNESS JOURNEY
+      </animated.span>
+      <animated.h1 style={titleAnimation} className="hero-title">
+        Reclaim Your Mind, Body & Strength
+      </animated.h1>
+      <animated.p style={descriptionAnimation} className="hero-description">
+        Discover the balance between strength and wellness. Empower yourself with personalized coaching, real-time progress tracking, and a community built to support your goals.
+      </animated.p>
+      <animated.div style={descriptionAnimation}>
+        <button className="get-started-button" onClick={handleGetStartedClick}>
+          Start Your Journey
+        </button>
+      </animated.div>
     </div>
   );
 };
@@ -190,14 +198,14 @@ const YogaComponent = () => {
           />
         </div>
         <div className="yoga-text">
-    <h2 className="heading">Elevate Your Wellness Journey</h2>
-    <p className="subtext">
+    <h2 className="head">Elevate Your Wellness Journey</h2>
+    <p className="sub">
         At Fitaybl, we’re dedicated to helping you reach new heights in your fitness and well-being. Our mission is to bring you a personalized experience that supports both your body and mind.
     </p>
-    <p className="highlight">
+    <p className="highlit">
         Connect with expert coaches, set achievable goals, and transform your health journey with a community built for growth and inspiration.
     </p>
-    <button className="cta-button">Get Started</button>
+    <button className="ct-button">Get Started</button>
 </div>
 
       </div>
