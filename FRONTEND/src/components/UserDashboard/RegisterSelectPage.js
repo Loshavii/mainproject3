@@ -56,33 +56,63 @@
 // }
 
 // export default RegisterSelectPage;
-// RegisterSelectPage.js
+
+
 import React from 'react';
 import '../CSS/RegisterSelectPage.css';
 import yogaImage from './img1.webp'; // replace with the path to the image file
+import wellnessImage from './img1.webp'; // replace with the path to the wellness image
 
 const RegisterSelectPage = () => {
   return (
-    <div className="select-container" id="about">
-      <div className="select-content">
-        <div className="select-image">
-          <img
-            src={yogaImage}
-            alt="Yoga Pose"
-            className="ima"
-          />
-        </div>
-        <div className="select-text">
-    <h2 className="heading">Elevate Your Wellness Journey</h2>
-    <p className="subtext">
-        At Fitaybl, we’re dedicated to helping you reach new heights in your fitness and well-being. Our mission is to bring you a personalized experience that supports both your body and mind.
-    </p>
-    <p className="highlight">
-        Connect with expert coaches, set achievable goals, and transform your health journey with a community built for growth and inspiration.
-    </p>
-    <button className="cta-button">Get Started</button>
-</div>
+    <div>
+      {/* Wellness Journey Section */}
+      <div className="select-container" id="about">
+        <div className="select-content">
+          <div className="select-image">
+            <img
+              src={yogaImage}
+              alt="Yoga Pose"
+              className="ima"
+            />
+          </div>
+          <div className="select-text">
+            <h2 className="heading">Welcome Back to Fitaybl!</h2>
+            <p className="subtext">
+                Your wellness journey continues here! At Fitaybl, we believe that every step you take brings you closer to your goals. Log in to unlock your personalized dashboard and access tailored resources designed just for you.
+            </p>
+            <p className="highlight">
+                Reconnect with expert coaches, track your progress, and gain insights that empower you to elevate your fitness and well-being. Join our community of like-minded individuals who are all on a path to transformation and success!
+            </p>
+            <button className="cta-button" aria-label="Get Started">Continue Your Adventure</button>
+          </div>
 
+        </div>
+      </div>
+
+      {/* Holistic Wellness Section */}
+      <div className="select-container" id="wellness">
+        <div className="select-content">
+        <div className="select-text">
+          <h2 className="heading">Become a Coach with Fitaybl!</h2>
+          <p className="subtext">
+              Are you passionate about helping others achieve their fitness goals? Join Fitaybl and become part of a vibrant community dedicated to transforming lives! As a coach, you will have the opportunity to share your expertise, inspire others, and make a meaningful impact on their wellness journeys.
+          </p>
+          <p className="highlight">
+              Enjoy access to innovative tools and resources that will help you connect with clients, track their progress, and personalize their experience. With Fitaybl, you can build your brand, expand your reach, and thrive in a supportive environment designed for growth.
+          </p>
+          <button className="cta-button" aria-label="Get Started">Kickstart Your Coaching Journey</button>
+        </div>
+
+          <div className="select-image">
+            <img
+              src={wellnessImage}
+              alt="Wellness Activity"
+              className="ima"
+            />
+          </div>
+          
+        </div>
       </div>
     </div>
   );
