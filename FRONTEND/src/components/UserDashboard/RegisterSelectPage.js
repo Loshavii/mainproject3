@@ -62,6 +62,7 @@ import React from 'react';
 import '../CSS/RegisterSelectPage.css';
 import yogaImage from './img1.webp'; // replace with the path to the image file
 import wellnessImage from './img1.webp'; // replace with the path to the wellness image
+import { Link } from 'react-router-dom';
 
 const RegisterSelectPage = () => {
   return (
@@ -84,7 +85,9 @@ const RegisterSelectPage = () => {
             <p className="highlight">
                 Reconnect with expert coaches, track your progress, and gain insights that empower you to elevate your fitness and well-being. Join our community of like-minded individuals who are all on a path to transformation and success!
             </p>
-            <button className="cta-button" aria-label="Get Started">Continue Your Adventure</button>
+            <Link to="/register-user">
+              <button className="cta-button" aria-label="Get Started">Continue Your Adventure</button>
+            </Link>
           </div>
 
         </div>
@@ -101,7 +104,9 @@ const RegisterSelectPage = () => {
           <p className="highlight">
               Enjoy access to innovative tools and resources that will help you connect with clients, track their progress, and personalize their experience. With Fitaybl, you can build your brand, expand your reach, and thrive in a supportive environment designed for growth.
           </p>
-          <button className="cta-button" aria-label="Get Started">Kickstart Your Coaching Journey</button>
+          <Link to="/register-coach">
+              <button className="cta-button" aria-label="Get Started">Continue Your Adventure</button>
+          </Link>
         </div>
 
           <div className="select-image">
