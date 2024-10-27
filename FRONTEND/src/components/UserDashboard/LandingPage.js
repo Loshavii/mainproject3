@@ -44,10 +44,12 @@ import { motion } from 'framer-motion';
 import { Facebook, Twitter, Linkedin, ChevronDown } from 'lucide-react';
 import '../CSS/Landing.css';
 import img from '../logo.png';
-import side from '../CSS/sd.jpg';
+import img4 from './img4.webp';
 import img1 from './img1.webp';
 import img2 from './img2.webp';
 import img3 from './img3.webp';
+import img5 from './img6.jpg';
+
 // Navigation Component
 const Navigation = ({ scrollToContact }) => {
   const [scrolled, setScrolled] = useState(false);
@@ -141,10 +143,11 @@ const HeroImage = () => {
 
   return (
     <animated.div style={imageAnimation} className="hero-image-container">
-      <img src={side} alt="Woman practicing yoga" className="hero-image" />
+      <img src={img5} alt="Woman practicing yoga" className="hero-image" />
     </animated.div>
   );
 };
+
 
 // ScrollIndicator Component
 const ScrollIndicator = () => {
@@ -181,7 +184,7 @@ const YogaComponent = () => {
       <div className="yoga-content">
         <div className="yoga-image">
           <img
-            src={side}
+            src={img4}
             alt="Yoga Pose"
             className="image"
           />
@@ -284,41 +287,40 @@ const Newsletter = () => (
     </motion.div>
   </div>
 );
-
 // Footer Component
 const Footer = () => (
-  <div className="footer">
-    <div className="footer-about">
+  <footer className="footer">
+    <div className="footer-section footer-about">
       <h3>FitAybl</h3>
       <p>Your go-to app for holistic wellness and fitness. We empower you to achieve your health goals with personalized guidance and community support.</p>
       <div className="social-icons">
-        <a href="#"><i className="fab fa-facebook"></i></a>
-        <a href="#"><i className="fab fa-twitter"></i></a>
-        <a href="#"><i className="fab fa-linkedin"></i></a>
+        <a href="#" aria-label="Facebook"><i className="fab fa-facebook-f"></i></a>
+        <a href="#" aria-label="Twitter"><i className="fab fa-twitter"></i></a>
+        <a href="#" aria-label="LinkedIn"><i className="fab fa-linkedin-in"></i></a>
       </div>
     </div>
-    <div className="footer-links">
+    <div className="footer-section footer-links">
       <h4>Quick Links</h4>
       <ul>
-        <li>Home</li>
-        <li>About Us</li>
-        <li>Services</li>
-        <li>Team</li>
-        <li>Contact Us</li>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Team</a></li>
+        <li><a href="#">Contact Us</a></li>
       </ul>
     </div>
-    <div className="footer-contact">
+    <div className="footer-section footer-contact">
       <h4>Contact Info</h4>
       <p><i className="fas fa-phone"></i> +94 76 078 3412</p>
       <p><i className="fas fa-envelope"></i> fitaybl@gmail.com</p>
-      <p><i className="fas fa-map-marker-alt"></i> Mariddy Lane, Uduvil, Jaffna, Northen Province, Srilanka</p>
+      <p><i className="fas fa-map-marker-alt"></i> Mariddy Lane, Uduvil, Jaffna, Northern Province, Sri Lanka</p>
     </div>
-    <div className="footer-copyright">
+    <div className="footer-bottom">
       <p>&copy; 2024 FitAybl. All rights reserved.</p>
     </div>
-  </div>
-  
+  </footer>
 );
+
 
 const LandingPage = () => {
   const contactRef = useRef(null);
