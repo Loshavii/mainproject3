@@ -64,7 +64,7 @@ const UserManagement = () => {
               <tr key={User._id} className="table-row">
                 <td className="table-cell">
                   <div className="user-info">
-                    <div className="avatar">
+                    <div className="avatar01">
                       <FaUser />
                     </div>
                     {`${User.firstName} ${User.lastName}`}
