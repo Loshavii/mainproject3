@@ -1,4 +1,4 @@
-
+/* 
    .register-coach-container {
     display: flex;
     justify-content: center;
@@ -36,7 +36,7 @@
   .form-group input {
     width: 100%;
     padding: 10px;
-    padding-left: 40px; /* Offset for icon */
+    padding-left: 40px; 
     border: 1px solid #6b6e70;
     border-radius: 5px;
     box-sizing: border-box;
@@ -68,7 +68,7 @@
     padding: 10px;
     border: none;
     border-radius: 5px;
-    background-color: #4d4b4b; /* Updated to match palette */
+    background-color: #4d4b4b; 
     color: #0d0d0d; 
     font-size: 16px;
     cursor: pointer;
@@ -76,9 +76,9 @@
   }
   
   .submit-button:hover {
-    background-color: #d3d3d3; /* Updated to match palette */
-    color: #0d0d0d; /* Updated text color on hover */
-    transform: scale(1.05); /* Hover shade for button */
+    background-color: #d3d3d3; 
+    color: #0d0d0d; 
+    transform: scale(1.05); 
   }
   
   .login-link {
@@ -98,8 +98,8 @@
   
   .welcome-contain {
     flex: 1;
-    background: linear-gradient(135deg, #0d0d0d, #4d4b4b) !important; /* Gradient using button color */
-    color: #ffffff; /* Text color */
+    background: linear-gradient(135deg, #0d0d0d, #4d4b4b) !important; 
+    color: #ffffff; 
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -115,4 +115,6 @@
   .welcome-container p {
     font-size: 16px;
   }
-  
+   */
+
+   
