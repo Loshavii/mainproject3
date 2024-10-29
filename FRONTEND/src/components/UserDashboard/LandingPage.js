@@ -44,7 +44,7 @@ import { motion } from 'framer-motion';
 import { Facebook, Twitter, Linkedin, ChevronDown } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import '../CSS/Landing.css';
-import img from '../logo.png';
+import img from './fitzhore.png';
 import img4 from './img4.webp';
 import img1 from './img1.webp';
 import img2 from './img2.webp';
