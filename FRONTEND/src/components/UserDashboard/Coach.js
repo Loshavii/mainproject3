@@ -73,6 +73,8 @@ const Coach = () => {
   };
 
   return (
+    <div className="login-page">
+
     <div className="coaches-container">
       {coaches.map((coach) => (
         <div key={coach._id} className="coach-card">
@@ -92,6 +94,7 @@ const Coach = () => {
           </div>
         </div>
       ))}
+    </div>
     </div>
   );
 };

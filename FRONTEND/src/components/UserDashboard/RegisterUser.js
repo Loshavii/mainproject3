@@ -1,6 +1,5 @@
-
 import React, { useState } from 'react';
-import { Mail, Lock, Loader, User, Key, Shield, Edit3 } from 'lucide-react';
+import { Mail, Lock, Loader, User, Shield, Edit3 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import '../CSS/RegisterUser.css';
 import axios from 'axios';
@@ -8,8 +7,6 @@ import axios from 'axios';
 const RegisterPage = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
     username: '',
     email: '',
     password: ''
@@ -25,11 +22,9 @@ const RegisterPage = () => {
   };
 
   const validateForm = () => {
-    const { firstName, lastName, username, email, password } = formData;
+    const { username, email, password } = formData;
     const newErrors = {};
 
-    if (!firstName.trim()) newErrors.firstName = 'First name is required';
-    if (!lastName.trim()) newErrors.lastName = 'Last name is required';
     if (!username.trim()) newErrors.username = 'Username is required';
     if (!email.trim()) {
       newErrors.email = 'Email is required';
@@ -56,8 +51,6 @@ const RegisterPage = () => {
       setSuccessMessage('Account created successfully!');
       setErrorMessage('');
       setFormData({
-        firstName: '',
-        lastName: '',
         username: '',
         email: '',
         password: ''
@@ -96,8 +89,6 @@ const RegisterPage = () => {
           </div>
 
           <form onSubmit={handleSubmit} className="form">
-           
-
             {/* Username Input */}
             <div className={`form-group2 ${focusedInput === 'username' ? 'focused' : ''}`}>
               <div className="input-wrapper2">
@@ -180,7 +171,6 @@ const RegisterPage = () => {
           <div className="features">
             {[
               { icon: Shield, title: "Account Protection", desc: "Secure registration process" },
-              { icon: Key, title: "Easy Login", desc: "Simplified access to your dashboard" },
               { icon: Edit3, title: "Personalized Profile", desc: "Customize your experience" },
               { icon: User, title: "Community Access", desc: "Connect with others" }
             ].map((feature, index) => (
