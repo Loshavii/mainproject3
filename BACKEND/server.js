@@ -80,7 +80,7 @@ app.use('/api/coaches', coachRoutes); // Route for coach-related registration/lo
 app.use('/api/admin', adminRoutes); // Admin route for managing coach requests (approve/reject)
 app.use('/api/coachesProfiles', coachProfileRoutes); // Route for coach profile management
 app.use('/api/profiles', profileRoutes); // Route for handling profile setup (new)
-app.use('/api/payment', paymentRoutes);
+app.use('/api/payments', paymentRoutes);
 // Start the server
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);

@@ -7,10 +7,9 @@ const CoachDashboard = () => {
   const [user, setUser] = useState(null); // State to hold basic user details
   const [profileData, setProfileData] = useState(null); // State to hold full profile data
   const navigate = useNavigate();
+  
   const handleMakePayment = () => {
-    // Logic for navigating to the payment page or initiating the payment process
-    navigate('/payment'); // Navigate to the Payment page
-    // You could redirect or call an API for creating the payment intent here
+    navigate('/payment');
   };
   
   useEffect(() => {
@@ -33,8 +32,13 @@ const CoachDashboard = () => {
               Authorization: `Bearer ${token}`
             }
           });
-          setProfileData(profileResponse.data); // Set profile data from API response
+          const profile = profileResponse.data;
+          setProfileData(profile); // Set profile data from API response
 
+          // Store contactOption in session storage
+          if (profile.contactOption) {
+            sessionStorage.setItem('contactOption', profile.contactOption);
+          }
         } else {
           navigate('/loginuser'); // If no ID or token, redirect to login
         }
@@ -53,6 +57,8 @@ const CoachDashboard = () => {
   const goToCoachcard = () => {
     navigate('/coach');
   };
+
+  const contactOption = sessionStorage.getItem('contactOption'); // Retrieve contactOption from session storage
 
   return (
     <div className="dashboard-container">
@@ -87,7 +93,6 @@ const CoachDashboard = () => {
           </div>
         </section>
         <section className="status-section">
-          {/* Display profile data and status */}
           {profileData && (
             <div>
               {profileData.status === 'approved' ? (
@@ -95,6 +100,7 @@ const CoachDashboard = () => {
                   <h3>🎉 Congratulations! Your profile has been approved! 🎉</h3>
                   <p>You are now ready to start connecting with coaches. Best of luck on your fitness journey!</p>
                   <button className="make-payment-button" onClick={handleMakePayment}>Make a Payment</button>
+                  <p><strong>Contact Option:</strong> {contactOption}</p> {/* Display contactOption */}
                 </div>
               ) : profileData.status === 'declined' ? (
                 <div className="status-message rejection">

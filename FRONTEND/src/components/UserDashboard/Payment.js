@@ -20,17 +20,26 @@ const CheckoutForm = () => {
 
   useEffect(() => {
     // Fetch package details and amount from sessionStorage
-    const storedAmount = sessionStorage.getItem('paymentAmount');
     const storedPackageName = sessionStorage.getItem('selectedPackageName');
     const storedPackageDescription = sessionStorage.getItem('selectedPackageDescription');
 
     // Update state with retrieved values
-    if (storedAmount) setAmount(parseInt(storedAmount, 10));
     if (storedPackageName && storedPackageDescription) {
       setPackageDetails({
         name: storedPackageName,
         description: storedPackageDescription,
       });
+    }
+
+    // Retrieve contactOption from sessionStorage
+    const contactOption = sessionStorage.getItem('contactOption');
+    if (contactOption) {
+      // Set the amount based on contact option
+      if (contactOption === 'chat') {
+        setAmount(300); // $3 in cents
+      } else if (contactOption === 'video') {
+        setAmount(500); // $5 in cents
+      }
     }
   }, []);
 
@@ -46,7 +55,7 @@ const CheckoutForm = () => {
 
     try {
       // Create PaymentIntent with the dynamic amount in cents
-      const response = await axios.post('http://localhost:7100/api/payments/payment-intent', {
+      const response = await axios.post('http://localhost:2003/api/payments/payment-intent', {
         amount,
         cardholderName,
       });
@@ -75,6 +84,7 @@ const CheckoutForm = () => {
         sessionStorage.removeItem('paymentAmount');
         sessionStorage.removeItem('selectedPackageName');
         sessionStorage.removeItem('selectedPackageDescription');
+        sessionStorage.removeItem('contactOption'); // Clear contactOption as well
 
         // Retrieve current packages from local storage
         const userPackages = JSON.parse(localStorage.getItem('userPackages')) || [];
@@ -95,7 +105,7 @@ const CheckoutForm = () => {
         localStorage.setItem('userPackages', JSON.stringify(userPackages));
 
         // Save purchase details to the backend (if needed)
-        await axios.post('http://localhost:7100/api/packages/purchase', {
+        await axios.post('http://localhost:2003/api/packages/purchase', {
           userId: sessionStorage.getItem('userId'),
           packageId: sessionStorage.getItem('selectedPackageId'),
           name: packageDetails.name,

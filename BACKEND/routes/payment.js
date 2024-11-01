@@ -1,7 +1,7 @@
-import express from 'express';
-import Stripe from 'stripe';
-import dotenv from 'dotenv';
-import mongoose from 'mongoose';
+const express = require('express');
+const Stripe = require('stripe');
+const dotenv = require('dotenv');
+const mongoose = require('mongoose');
 
 dotenv.config();
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
@@ -104,5 +104,5 @@ res.status(500).json({ error: 'Error retrieving last transaction', details: erro
 }
 });
 
-export default router;
+module.exports = router;
 
