@@ -7,7 +7,12 @@ const CoachDashboard = () => {
   const [user, setUser] = useState(null); // State to hold basic user details
   const [profileData, setProfileData] = useState(null); // State to hold full profile data
   const navigate = useNavigate();
-
+  const handleMakePayment = () => {
+    // Logic for navigating to the payment page or initiating the payment process
+    navigate('/payment'); // Navigate to the Payment page
+    // You could redirect or call an API for creating the payment intent here
+  };
+  
   useEffect(() => {
     const fetchCoachData = async () => {
       try {
@@ -89,6 +94,7 @@ const CoachDashboard = () => {
                 <div className="status-message congratulation">
                   <h3>🎉 Congratulations! Your profile has been approved! 🎉</h3>
                   <p>You are now ready to start connecting with coaches. Best of luck on your fitness journey!</p>
+                  <button className="make-payment-button" onClick={handleMakePayment}>Make a Payment</button>
                 </div>
               ) : profileData.status === 'declined' ? (
                 <div className="status-message rejection">

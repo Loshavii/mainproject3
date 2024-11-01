@@ -18,7 +18,7 @@ import UserManagement from './components/AdminDashboard/UserManagement';
 import CoachPro from './components/CoachDashboard/CoachProfile'; // Import CoachProfile
 import UserDashboard from './components/UserDashboard/UserDashboard';
 import ProfileCard from '../src/components/UserDashboard/ProfileCard';
-
+import Payment from '../src/components/UserDashboard/Payment';
 
 function App() {
   return (
@@ -42,6 +42,7 @@ function App() {
           <Route path="/coach-profile" element={<CoachPro />} />
           <Route path="/user-dashboard" element={<UserDashboard />} />
           <Route path="/profile-card/:email" element={<ProfileCard />} />
+          <Route path='/payment' element={<Payment />} />
         </Routes>
       </div>
     </Router>
