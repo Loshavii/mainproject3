@@ -6,9 +6,13 @@ import '../CSS/CoachDashboard.css';
 const CoachDashboard = () => {
   const [user, setUser] = useState(null); // State to hold basic user details
   const [profileData, setProfileData] = useState(null); // State to hold full profile data
+  const [paymentStatus, setPaymentStatus] = useState(sessionStorage.getItem('paymentStatus') || ''); // Payment status
   const navigate = useNavigate();
   
   const handleMakePayment = () => {
+    // Set payment status to pending before navigating to payment page
+    sessionStorage.setItem('paymentStatus', 'Pending');
+    setPaymentStatus('Pending');
     navigate('/payment');
   };
   
@@ -48,6 +52,12 @@ const CoachDashboard = () => {
     };
 
     fetchCoachData();
+
+    // Check payment status on page load
+    const savedPaymentStatus = sessionStorage.getItem('paymentStatus');
+    if (savedPaymentStatus) {
+      setPaymentStatus(savedPaymentStatus);
+    }
   }, [navigate]);
 
   const goToProfile = () => {
@@ -99,8 +109,11 @@ const CoachDashboard = () => {
                 <div className="status-message congratulation">
                   <h3>🎉 Congratulations! Your profile has been approved! 🎉</h3>
                   <p>You are now ready to start connecting with coaches. Best of luck on your fitness journey!</p>
-                  <button className="make-payment-button" onClick={handleMakePayment}>Make a Payment</button>
-                  <p><strong>Contact Option:</strong> {contactOption}</p> {/* Display contactOption */}
+                  {paymentStatus === 'succeeded' ? (
+                    <p className="payment-success">Payment completed successfully. Thank you!</p>
+                  ) : (
+                    <button className="make-payment-button" onClick={handleMakePayment}>Make a Payment</button>
+                  )}
                 </div>
               ) : profileData.status === 'declined' ? (
                 <div className="status-message rejection">

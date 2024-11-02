@@ -8,7 +8,7 @@ function CoachDetail() {
   const navigate = useNavigate();
   const { coachEmail } = useParams(); // Fetch the email from the URL
   const [coachProfile, setCoachProfile] = useState(null);
-  const [showModal, setShowModal] = useState(false); // State for modal visibility
+  const [ setShowModal] = useState(false); // State for modal visibility
 
   useEffect(() => {
     // Fetch coach profile based on coachEmail

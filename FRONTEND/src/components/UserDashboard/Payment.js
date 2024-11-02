@@ -53,6 +53,9 @@ const CheckoutForm = () => {
       return;
     }
 
+    // Set paymentStatus to "Pending" before starting the payment process
+    sessionStorage.setItem('paymentStatus', 'Pending');
+
     try {
       // Create PaymentIntent with the dynamic amount in cents
       const response = await axios.post('http://localhost:2003/api/payments/payment-intent', {
@@ -77,14 +80,17 @@ const CheckoutForm = () => {
       } else if (paymentIntent.status === 'succeeded') {
         toast.success(`Payment of $${(amount / 100).toFixed(2)} successful! Thank you for your purchase.`, {
           position: "top-right",
-          autoClose: 3000, // Set auto close to 3 seconds
+          autoClose: 3000,
         });
 
-        // Clear session storage
+        // Update paymentStatus to "Succeeded" after payment success
+        sessionStorage.setItem('paymentStatus', paymentIntent.status);
+
+        // Clear session storage for payment details
         sessionStorage.removeItem('paymentAmount');
         sessionStorage.removeItem('selectedPackageName');
         sessionStorage.removeItem('selectedPackageDescription');
-        sessionStorage.removeItem('contactOption'); // Clear contactOption as well
+        sessionStorage.removeItem('contactOption');
 
         // Retrieve current packages from local storage
         const userPackages = JSON.parse(localStorage.getItem('userPackages')) || [];
@@ -105,13 +111,13 @@ const CheckoutForm = () => {
         localStorage.setItem('userPackages', JSON.stringify(userPackages));
 
         // Save purchase details to the backend (if needed)
-        await axios.post('http://localhost:2003/api/packages/purchase', {
-          userId: sessionStorage.getItem('userId'),
-          packageId: sessionStorage.getItem('selectedPackageId'),
-          name: packageDetails.name,
-          description: packageDetails.description,
-          price: amount,
-        });
+        // await axios.post('http://localhost:2003/api/packages/purchase', {
+        //   userId: sessionStorage.getItem('userId'),
+        //   packageId: sessionStorage.getItem('selectedPackageId'),
+        //   name: packageDetails.name,
+        //   description: packageDetails.description,
+        //   price: amount,
+        // });
       }
     } catch (err) {
       toast.error('An error occurred. Please try again.');
@@ -140,12 +146,6 @@ const CheckoutForm = () => {
       {/* Card Element Input */}
       <div className="form-group mb-3">
         <CardElement className="form-control" />
-      </div>
-
-      {/* Package Details */}
-      <div className="mb-3">
-        <p><strong>Package Name:</strong> {packageDetails.name}</p>
-        <p><strong>Description:</strong> {packageDetails.description}</p>
       </div>
 
       {/* Submit Button */}
