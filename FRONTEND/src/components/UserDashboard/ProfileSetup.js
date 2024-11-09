@@ -1,5 +1,4 @@
 
-
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../CSS/ProfileSetup.css';
@@ -27,19 +26,33 @@ function ProfileSetup() {
     bloodSugarLevels: '',
     contactOption: '', // New field for contact option
     coachEmail: '', // Store coach email from session storage
+    userId: '', // New field to store the user ID from session storage
   });
 
   const [message, setMessage] = useState(''); // To display success or error message
 
-  // Fetch coachEmail from sessionStorage when the component loads
+  // Fetch userId and coachEmail from sessionStorage when the component loads
   useEffect(() => {
     const storedCoachEmail = sessionStorage.getItem('coachEmail');
+    const storedUserId = sessionStorage.getItem('id');
+    const storedToken = sessionStorage.getItem('token'); // If needed for API requests
+    
     if (storedCoachEmail) {
       setFormData((prevData) => ({
         ...prevData,
         coachEmail: storedCoachEmail, // Set coachEmail in formData
       }));
     }
+    
+    if (storedUserId) {
+      setFormData((prevData) => ({
+        ...prevData,
+        userId: storedUserId, // Set userId in formData
+      }));
+    }
+    
+    // Optionally use the token for API requests:
+    // If you want to use the token in headers for authentication, you can use the `storedToken` here.
   }, []);
 
   // Handle form input changes
@@ -54,7 +67,11 @@ function ProfileSetup() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:2003/api/profiles/', formData);
+      const response = await axios.post('http://localhost:2003/api/profiles/', formData, {
+        headers: {
+          Authorization: `Bearer ${sessionStorage.getItem('token')}`, // Pass token in headers
+        }
+      });
       setMessage('Profile saved successfully!');
       console.log('Profile saved:', response.data);
     } catch (error) {
@@ -253,36 +270,34 @@ function ProfileSetup() {
           />
         </div>
 
-
-<div className="contact-options-container">
-  <h2 className="form-title">Contact Options</h2>
-  <div className="form-group">
-    <label className="form-label">How would you like to contact the coach?</label>
-    <div className="contact-options">
-      <label className="contact-option">
-        <input
-          type="radio"
-          name="contactOption"
-          value="chat"
-          onChange={handleChange}
-          className="custom-radio"
-        />
-        <span className="option-label">💬 Contact via Chat</span>
-      </label>
-      <label className="contact-option">
-        <input
-          type="radio"
-          name="contactOption"
-          value="video"
-          onChange={handleChange}
-          className="custom-radio"
-        />
-        <span className="option-label">📹 Contact via Video Interaction</span>
-      </label>
-    </div>
-  </div>
-</div>
-
+        <div className="contact-options-container">
+          <h2 className="form-title">Contact Options</h2>
+          <div className="form-group">
+            <label className="form-label">How would you like to contact the coach?</label>
+            <div className="contact-options">
+              <label className="contact-option">
+                <input
+                  type="radio"
+                  name="contactOption"
+                  value="chat"
+                  onChange={handleChange}
+                  className="custom-radio"
+                />
+                <span className="option-label">💬 Contact via Chat</span>
+              </label>
+              <label className="contact-option">
+                <input
+                  type="radio"
+                  name="contactOption"
+                  value="video"
+                  onChange={handleChange}
+                  className="custom-radio"
+                />
+                <span className="option-label">📹 Contact via Video Interaction</span>
+              </label>
+            </div>
+          </div>
+        </div>
 
         <div className="button-group">
           <button type="submit">Save Profile</button>

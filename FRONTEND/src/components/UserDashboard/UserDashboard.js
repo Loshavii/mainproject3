@@ -1,3 +1,6 @@
+
+
+
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -6,8 +9,63 @@ import '../CSS/CoachDashboard.css';
 const CoachDashboard = () => {
   const [user, setUser] = useState(null); // State to hold basic user details
   const [profileData, setProfileData] = useState(null); // State to hold full profile data
-  const [paymentStatus, setPaymentStatus] = useState(sessionStorage.getItem('paymentStatus') || ''); // Payment status
+  const [paymentStatus, setPaymentStatus] = useState(''); // Payment status
   const navigate = useNavigate();
+
+  // Fetch user and payment status when the component mounts
+  useEffect(() => {
+    const fetchCoachData = async () => {
+      try {
+        const userId = sessionStorage.getItem('id');
+        const token = sessionStorage.getItem('token');
+  
+        if (userId && token) {
+          const userResponse = await axios.get(`http://localhost:2003/api/users/users/${userId}`, {
+            headers: {
+              Authorization: `Bearer ${token}`
+            }
+          });
+          const userData = userResponse.data;
+          setUser(userData);
+  
+          const profileResponse = await axios.get(`http://localhost:2003/api/profiles/${userData.email}`, {
+            headers: {
+              Authorization: `Bearer ${token}`
+            }
+          });
+          const profile = profileResponse.data;
+          setProfileData(profile);
+  
+          if (profile.contactOption) {
+            sessionStorage.setItem('contactOption', profile.contactOption);
+          }
+  
+          const paymentResponse = await axios.get(`http://localhost:2003/api/payments/payment-get/${userId}`, {
+            headers: {
+              Authorization: `Bearer ${token}`
+            }
+          });
+  
+          console.log('Payment Response:', paymentResponse.data);
+  
+          // Convert payment status to lowercase to match conditions
+          const status = paymentResponse.data.paymentStatus.toLowerCase();
+          setPaymentStatus(status);
+  
+        } else {
+          navigate('/loginuser');
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        if (error.response) {
+          console.error('Error Response:', error.response.data);
+        }
+      }
+    };
+  
+    fetchCoachData();
+  }, [navigate]);
+  
   
   const handleMakePayment = () => {
     // Set payment status to pending before navigating to payment page
@@ -15,50 +73,6 @@ const CoachDashboard = () => {
     setPaymentStatus('Pending');
     navigate('/payment');
   };
-  
-  useEffect(() => {
-    const fetchCoachData = async () => {
-      try {
-        const userId = sessionStorage.getItem('id'); // Get user ID from sessionStorage
-        const token = sessionStorage.getItem('token'); // Get token from sessionStorage
-        if (userId && token) {
-          const userResponse = await axios.get(`http://localhost:2003/api/users/users/${userId}`, {
-            headers: {
-              Authorization: `Bearer ${token}` // Pass token in headers
-            }
-          });
-          const userData = userResponse.data;
-          setUser(userData);
-
-          // Fetch profile data using email
-          const profileResponse = await axios.get(`http://localhost:2003/api/profiles/${userData.email}`, {
-            headers: {
-              Authorization: `Bearer ${token}`
-            }
-          });
-          const profile = profileResponse.data;
-          setProfileData(profile); // Set profile data from API response
-
-          // Store contactOption in session storage
-          if (profile.contactOption) {
-            sessionStorage.setItem('contactOption', profile.contactOption);
-          }
-        } else {
-          navigate('/loginuser'); // If no ID or token, redirect to login
-        }
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-
-    fetchCoachData();
-
-    // Check payment status on page load
-    const savedPaymentStatus = sessionStorage.getItem('paymentStatus');
-    if (savedPaymentStatus) {
-      setPaymentStatus(savedPaymentStatus);
-    }
-  }, [navigate]);
 
   const goToProfile = () => {
     navigate('/profile-setup');
@@ -81,6 +95,19 @@ const CoachDashboard = () => {
               <p>{user.email}</p>
             </>
           )}
+        </div>
+        {/* Payment Status Section */}
+        <div className="payment-status-section">
+          <h4>Payment Status:</h4>
+          <p className={`payment-status ${paymentStatus}`}>
+            {paymentStatus === 'succeeded'
+              ? 'Payment completed successfully'
+              : paymentStatus === 'pending'
+              ? 'Payment is pending'
+              : paymentStatus === 'failed'
+              ? 'Payment failed'
+              : 'No payment made'}
+          </p>
         </div>
       </aside>
       <main className="main-content">
